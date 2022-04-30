@@ -6,11 +6,8 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
-    String yo = "Hola";
+    String version = "0.0.3-rama";
 
-=======
->>>>>>> parent of 97662d3 (v.0.0.1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
