@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    String ñoclok = "Supapinga";
+    String yo = "Hola";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
