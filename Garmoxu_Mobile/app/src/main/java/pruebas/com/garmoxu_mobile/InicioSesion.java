@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class InicioSesion extends AppCompatActivity {
 
-    private String as= "";
+    private String asd= "asd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
