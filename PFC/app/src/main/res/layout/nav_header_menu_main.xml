@@ -22,16 +22,16 @@
         android:id="@+id/ivPuesto" />
 
     <TextView
-        android:id="@+id/tvNombreUser"
+        android:id="@+id/tvUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_title"
+        android:text="usuario"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle"
-        android:id="@+id/tvUsuarioPuesto" />
+        android:text="nombre y apellidos del usuario"
+        android:id="@+id/tvNombre" />
 </LinearLayout>

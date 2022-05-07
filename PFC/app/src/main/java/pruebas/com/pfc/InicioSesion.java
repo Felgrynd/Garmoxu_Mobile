@@ -67,9 +67,20 @@ public class InicioSesion extends AppCompatActivity {
 
                         try {
                             if(getPassEncrypt().equals(response.getString("Contraseña"))){
-                                Intent mainIntent = new Intent().setClass(InicioSesion.this, MenuMain.class);
+                                Intent mainIntent = null;
+                                if(response.getString("RestablecerContraseña").equals(1)){
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Añadir el codigo de ir a la activity de modificar contraseña
+                                    Toast.makeText(InicioSesion.this, "Cambiar a la ventana de modificacion de la contraseña", Toast.LENGTH_SHORT).show();
+
+                                }else mainIntent = new Intent().setClass(InicioSesion.this, MenuMain.class);
+
+                                mainIntent.putExtra("NombreUsuario", response.getString("NombreUsuario"));
+                                mainIntent.putExtra("NombreEmpleado", response.getString("NombreEmpleado"));
+                                //mainIntent.putExtra("ImagenUsuario", response.getString("ImagenUsuario"));
+                                mainIntent.putExtra("IdTipoUsuario", response.getString("IdTipoUsuario"));
                                 startActivity(mainIntent);
                                 finish();
+
                             }else Toast.makeText(getApplicationContext(), "Usuario o Contraseña incorrecta", Toast.LENGTH_SHORT).show();
 
                         } catch (Exception e) {

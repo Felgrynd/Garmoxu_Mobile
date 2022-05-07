@@ -6,20 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".ui.home.HomeFragment" >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnRecargar"
-        android:layout_gravity="center"
-        android:text="Recargar"
-        />
-
-    <ListView
-        android:layout_margin="5dp"
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvMesas"/>
+        android:hint="Buscar Pedido"
+        android:id="@+id/etBuscarMesaPropio"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/llMesasPropias">
+
+
+    </LinearLayout>
 
 </LinearLayout>

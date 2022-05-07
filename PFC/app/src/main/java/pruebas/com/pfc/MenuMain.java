@@ -22,7 +22,7 @@ public class MenuMain extends AppCompatActivity {
     private ActivityMenuMainBinding binding;
 
     private ImageView ivPuesto;
-    private TextView tvNombreUser, tvUsuarioPuesto;
+    private TextView tvNombre, tvUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +36,12 @@ public class MenuMain extends AppCompatActivity {
         View headerView = nv.getHeaderView(0);
 
         ivPuesto = headerView.findViewById(R.id.ivPuesto);
-        tvNombreUser = headerView.findViewById(R.id.tvNombreUser);
-        tvUsuarioPuesto = headerView.findViewById(R.id.tvUsuarioPuesto);
+        tvUser = headerView.findViewById(R.id.tvUser);
+        tvNombre = headerView.findViewById(R.id.tvNombre);
 
         //ivPuesto.setImageResource(R.drawable.ic_launcher_foreground);
-        tvNombreUser.setText("Usuario de prueba");
-        tvUsuarioPuesto.setText("usuario@dominio.com (Puesto)");
+        tvUser.setText(getIntent().getStringExtra("NombreUsuario"));
+        tvNombre.setText(getIntent().getStringExtra("NombreEmpleado"));
 //1------*/
 
         setSupportActionBar(binding.appBarMenuMain.toolbar);

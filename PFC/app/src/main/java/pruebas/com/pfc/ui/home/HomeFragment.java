@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,8 +20,7 @@ import pruebas.com.pfc.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
-    private ListView lvMesas;
-    private Button btnRecargar;
+    private EditText etBuscarMesaPropio;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,13 +38,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        btnRecargar = (Button) v.findViewById(R.id.btnRecargar);
-        btnRecargar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "ASd", Toast.LENGTH_SHORT).show();
-            }
-        });
+        etBuscarMesaPropio = (EditText) v.findViewById(R.id.etBuscarMesaPropio);
+
+        
 
         return v;
     }
