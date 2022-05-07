@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class InicioSesion extends AppCompatActivity {
 
+    private String as= "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
