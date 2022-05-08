@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/itmMenuMain"
+            android:icon="@drawable/iconomispedidos"
+            android:title="Tus pedidos" />
+        <item
+            android:id="@+id/itmPlatos"
+            android:icon="@drawable/iconoplatos"
+            android:title="Platos"/>
+        <item
+            android:id="@+id/itmOtrosClientes"
+            android:icon="@drawable/iconopedidosrestaurante"
+            android:title="Pedidos" />
+    </group>
+    <!--Hay que posicionarlo en la parte de abajo(gravity botton)-->
+    <group>
+        <item
+            android:id="@+id/itmAjustes"
+            android:icon="@drawable/iconoajustes"
+            android:title="Ajustes"/>
+    </group>
+</menu>

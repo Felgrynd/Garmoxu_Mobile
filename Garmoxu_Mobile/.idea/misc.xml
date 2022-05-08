@@ -4,6 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/AX/Proyecto_Gamoxu/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+<<<<<<< Updated upstream
+=======
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/activity_detalles_pedidos.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/activity_inicio_sesion.xml" value="0.33" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/activity_main.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/activity_menu_main.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/app_bar_menu_main.xml" value="0.25" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/content_menu_main.xml" value="0.33" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/fragment_gallery.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/fragment_home.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/fragment_slideshow.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/marco_listviewpedidos.xml" value="0.33" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/layout/nav_header_menu_main.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/Garmoxu_Mobile/app/src/main/res/menu/menu_main.xml" value="0.378125" />
+>>>>>>> Stashed changes
       </map>
     </option>
   </component>
