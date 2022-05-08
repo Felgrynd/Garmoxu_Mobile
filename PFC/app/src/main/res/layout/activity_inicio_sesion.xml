@@ -5,73 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".InicioSesion">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="3"
-        android:orientation="horizontal"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher_foreground"
-            />
+            android:id="@+id/imgvLogoLogin"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/logodiurno" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:orientation="vertical"
+        android:layout_height="3dp"
+        android:layout_weight="1"
         android:gravity="center"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="50dp"
-            android:gravity="center"
-            android:layout_marginBottom="50dp"
-            />
+        android:orientation="horizontal">
+
         <EditText
             android:id="@+id/etUser"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="  User"
-            android:layout_marginHorizontal="25dp"
             android:layout_marginBottom="25dp"
-            />
+            android:hint="  Usuario" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/iconologinusuario" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="-40dp">
+
         <EditText
             android:id="@+id/etPass"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="  Password"
-            android:layout_marginHorizontal="25dp"
+            android:hint="  Contraseña"
+            android:layout_marginBottom="25dp"/>
+
+        <ImageView
+            android:id="@+id/iconoVisibilidadPass"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginBottom="25dp"
-            android:inputType="textPassword"
-            />
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            />
+            android:src="@drawable/iconocontrasenaoculta"/>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio sesión"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="bottom|center"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Esta aplicacion esta orientado al uso exclusivo para los empleados al servicio del cliente del Local"
-            />
+            android:text="Esta aplicacion esta orientado al uso exclusivo para los empleados al servicio del cliente del Local" />
     </LinearLayout>
 
 </LinearLayout>
