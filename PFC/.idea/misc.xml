@@ -23,10 +23,12 @@
         <entry key="..\:/Users/AX/Proyecto_Gamoxu/Garmoxu_Mobile/PFC/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AX/Proyecto_Gamoxu/Garmoxu_Mobile/PFC/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/AX/Proyecto_Gamoxu/Garmoxu_Mobile/PFC/app/src/main/res/layout/nav_header_menu_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/drawable/side_nav_bar.xml" value="0.107" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/activity_detalles_pedido.xml" value="0.1838905775075988" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/activity_inicio_sesion.xml" value="0.378125" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/activity_main.xml" value="0.378125" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/activity_menu_main.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/activity_resetear_contrasena.xml" value="0.1770516717325228" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/app_bar_menu_main.xml" value="0.378125" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/content_menu_main.xml" value="0.378125" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/fragment_gallery.xml" value="0.378125" />
@@ -34,6 +36,8 @@
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/fragment_slideshow.xml" value="0.378125" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/marco_listviewpedidos.xml" value="0.3640625" />
         <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/layout/nav_header_menu_main.xml" value="0.378125" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/menu/activity_main_drawer.xml" value="0.3723076923076923" />
+        <entry key="..\:/Users/Julian/AndroidStudioProjects/Garmoxu_Mobile/PFC/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22" />
       </map>
     </option>
   </component>

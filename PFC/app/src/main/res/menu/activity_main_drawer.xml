@@ -6,22 +6,46 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/itmMenuMain"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Menu Principal" />
+            android:icon="@drawable/iconomispedidos"
+            android:title="Tus mesas" />
         <item
             android:id="@+id/itmPlatos"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Platos" />
+            android:icon="@drawable/iconoplatos"
+            android:title="Consultar platos" />
         <item
             android:id="@+id/itmOtrosClientes"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="OtrosClientes" />
+            android:icon="@drawable/iconopedidosrestaurante"
+            android:title="Mesas de tus compañeros" />
     </group>
 <!--Hayq que posicionarlo en la parte de abajo(gravity botton)-->
     <group>
         <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+        <item
+            android:title=""/>
+
+        <item
             android:id="@+id/itmAjustes"
-            android:icon="@drawable/side_nav_bar"
+            android:icon="@drawable/iconoajustes"
             android:title="Ajustes"/>
     </group>
+
 </menu>

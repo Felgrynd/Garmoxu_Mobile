@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,11 +25,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class InicioSesion extends AppCompatActivity {
+public class InicioSesion extends AppCompatActivity implements View.OnClickListener {
 
+    boolean activaVisualContra = false;
     boolean usuarioCorrecto;
     private EditText etUser, etPass;
     private Button btnLogin;
+    private ImageView iconoVisibilidadPass;
 
     private RequestQueue requestQueue;
     private final String urlDomain = "http://192.168.1.36/garmoxu/";
@@ -41,21 +44,41 @@ public class InicioSesion extends AppCompatActivity {
         etUser = findViewById(R.id.etUser);
         etPass = findViewById(R.id.etPass);
         btnLogin = findViewById(R.id.btnLogin);
+        iconoVisibilidadPass = findViewById(R.id.iconoVisibilidadPass);
 
         requestQueue = Volley.newRequestQueue(this);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                verificarUsuario();
-
-
-
-            }
-        });
-
+        iconoVisibilidadPass.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+
+        switch(v.getId()){
+
+            case R.id.btnLogin:
+                verificarUsuario();
+                break;
+
+
+            case R.id.iconoVisibilidadPass:
+
+                if(activaVisualContra == false){
+
+                    iconoVisibilidadPass.setImageResource(R.drawable.iconocontrasenavisible);
+                    activaVisualContra = true;
+                    //  SE ENSEÑA CONTRASEÑA
+
+                }
+                else {
+                    iconoVisibilidadPass.setImageResource(R.drawable.iconocontrasenaoculta);
+                    activaVisualContra = false;
+                }
+        }
+    }
+
+
 
     public void verificarUsuario(){
         String url = urlDomain + "verificar_user.php?NombreUsuario=" + etUser.getText().toString().trim() + "&Contraseña=" + etPass.getText().toString().trim();
@@ -106,5 +129,6 @@ public class InicioSesion extends AppCompatActivity {
 
         return etPass.getText().toString();
     }
+
 
 }
