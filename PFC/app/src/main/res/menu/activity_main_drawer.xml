@@ -35,17 +35,10 @@
             android:title=""/>
         <item
             android:title=""/>
-        <item
-            android:title=""/>
-        <item
-            android:title=""/>
-        <item
-            android:title=""/>
 
         <item
             android:id="@+id/itmAjustes"
             android:icon="@drawable/iconoajustes"
             android:title="Ajustes"/>
     </group>
-
 </menu>
