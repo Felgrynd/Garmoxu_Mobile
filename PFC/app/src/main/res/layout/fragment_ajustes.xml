@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Usuario"
+                android:text="@string/Usuario"
                 android:textSize="30dp" />
 
             <View
@@ -64,25 +64,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre del usuario:"
+                    android:text="@string/Nombredelusuario"
                     android:textSize="20dp" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre del usuario" />
+                    android:hint="@string/Nombredelusuario" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="Nombre del empleado:"
+                    android:text="@string/Nombredelempleado"
                     android:textSize="20dp" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre del empleado" />
+                    android:hint="@string/Nombredelempleado"/>
 
             </LinearLayout>
 
@@ -95,7 +95,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Restablecer contraseña"
+                    android:text="@string/RestablecerContraseña"
                     android:textSize="20dp"/>
 
                 <Switch
@@ -227,7 +227,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vista"
+                    android:text="@string/Vista"
                     android:textSize="30dp"/>
 
                 <View
@@ -246,7 +246,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tema: "
+                    android:text="@string/Tema"
                     android:textSize="20dp"/>
 
                 <RadioGroup
@@ -258,14 +258,14 @@
                     android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Claro"/>
+                    android:text="@string/Claro"/>
 
                 <RadioButton
                     android:id="@+id/rbOscuro"
                     android:layout_marginLeft="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Oscuro"/>
+                    android:text="@string/Oscuro"/>
                 </RadioGroup>
             </LinearLayout>
 
@@ -279,7 +279,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Idioma: "
+                    android:text="@string/Idioma"
                     android:textSize="20dp"/>
 
                 <Spinner
@@ -301,14 +301,14 @@
                     android:id="@+id/btnCerrarSesion"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
-                    android:text="Cerrar sesión"
+                    android:text="@string/CerrarSesion"
                     android:layout_marginRight="20dp"/>
 
                 <Button
                     android:id="@+id/btnAplicarCambios"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
-                    android:text="Aplicar cambios"
+                    android:text="@string/AplicarCambios"
                     android:layout_marginLeft="20dp"/>
             </LinearLayout>
         </LinearLayout>

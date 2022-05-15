@@ -7,15 +7,15 @@
         <item
             android:id="@+id/itmMenuMain"
             android:icon="@drawable/iconomispedidos"
-            android:title="Tus mesas" />
+            android:title="@string/TusMesas" />
         <item
             android:id="@+id/itmPlatos"
             android:icon="@drawable/iconoplatos"
-            android:title="Consultar platos" />
+            android:title="@string/ConsultarPlatos" />
         <item
             android:id="@+id/itmOtrosClientes"
             android:icon="@drawable/iconopedidosrestaurante"
-            android:title="Mesas de tus compañeros" />
+            android:title="@string/MesasCompañeros" />
     </group>
 <!--Hayq que posicionarlo en la parte de abajo(gravity botton)-->
     <group>
@@ -39,6 +39,6 @@
         <item
             android:id="@+id/itmAjustes"
             android:icon="@drawable/iconoajustes"
-            android:title="Ajustes"/>
+            android:title="@string/Ajustes"/>
     </group>
 </menu>

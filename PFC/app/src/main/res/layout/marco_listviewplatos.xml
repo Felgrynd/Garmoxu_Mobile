@@ -35,7 +35,7 @@
                 <TextView
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
-                    android:text="Codigo Plato: "
+                    android:text="@string/CodigoPlato"
                     android:layout_marginRight="10dp"/>
 
                 <TextView
@@ -48,7 +48,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Precio Total:"
+                    android:text="@string/PrecioTotal"
                     android:layout_marginLeft="20dp"/>
 
                 <TextView
@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre del plato:"
+                    android:text="@string/NombrePlato"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:hint="Plato de comida"/>
+                    android:hint="@string/PlatoComida"/>
             </LinearLayout>
 
             <LinearLayout
@@ -94,7 +94,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lista de alérgenos:"
+                    android:text="@string/ListaAlergenos"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:hint="Alérgenos en el plato"/>
+                    android:hint="@string/AlergenosPlato"/>
             </LinearLayout>
 
             <LinearLayout
@@ -114,7 +114,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Descripcion:"
+                    android:text="@string/Descripcion"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:hint="Descripcion del plato"/>
+                    android:hint="@string/DescripcionPlato"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

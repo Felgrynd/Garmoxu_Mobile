@@ -12,17 +12,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Buscar Pedido"
-        android:id="@+id/etBuscarMesaPropio"
-        />
+        android:hint="@string/BuscarPedido"
+        android:id="@+id/etBuscarMesaPropio"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/llMesasPropias">
-
-
     </LinearLayout>
-
 </LinearLayout>

@@ -26,15 +26,18 @@
         <activity
             android:name=".InicioSesion"
             android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".MenuMain"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_menu_main"
-            android:theme="@style/Theme.PFC.NoActionBar"/>
+            android:theme="@style/Theme.PFC.NoActionBar">
 
-            <activity
-                android:name=".MainActivity"
-                android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

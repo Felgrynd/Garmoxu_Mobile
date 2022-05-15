@@ -17,15 +17,15 @@
 
         <EditText
             android:id="@+id/etMeterCodigoPlato"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Mete codigo plato"/>
+            android:hint="@string/MeterCodigoPlato"/>
 
         <EditText
             android:id="@+id/etMeterNombrePlato"
-            android:layout_width="180dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Mete nombre plato"
+            android:hint="@string/MeterNombrePlato"
             android:layout_marginLeft="16dp"/>
     </LinearLayout>
 
@@ -34,7 +34,7 @@
         android:id="@+id/btnAplicarCambios"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:text="Aplicar filtros"
+        android:text="@string/AplicarFiltros"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="110dp"
         android:background="@color/rojoOscuro"/>
