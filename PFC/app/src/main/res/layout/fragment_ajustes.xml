@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Ajustes"
-    android:background="@color/azulClarito">
+    android:background="@color/FondoOscuro">
 
 
     <ScrollView
@@ -27,7 +27,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Usuario"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:textColor="@color/LetraBlanco"/>
 
             <View
                 android:layout_width="match_parent"
@@ -65,11 +66,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Nombredelusuario"
+                    android:textColor="@color/rojoOscuro"
                     android:textSize="20dp" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/LetraGrisClarito"
+                    android:textColor="@color/LetraGrisClarito"
                     android:hint="@string/Nombredelusuario" />
 
                 <TextView
@@ -77,12 +81,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:text="@string/Nombredelempleado"
+                    android:textColor="@color/rojoOscuro"
                     android:textSize="20dp" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/Nombredelempleado"/>
+                    android:hint="@string/Nombredelempleado"
+                    android:textColorHint="@color/LetraGrisClarito"
+                    android:textColor="@color/LetraGrisClarito"/>
 
             </LinearLayout>
 
@@ -96,6 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/RestablecerContraseña"
+                    android:textColor="@color/rojoOscuro"
                     android:textSize="20dp"/>
 
                 <Switch
@@ -228,6 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Vista"
+                    android:textColor="@color/LetraBlanco"
                     android:textSize="30dp"/>
 
                 <View
@@ -247,6 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Tema"
+                    android:textColor="@color/rojoOscuro"
                     android:textSize="20dp"/>
 
                 <RadioGroup
@@ -258,28 +268,30 @@
                     android:layout_marginLeft="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Claro"/>
+                    android:text="@string/Claro"
+                    android:textColor="@color/LetraGrisClarito"/>
 
                 <RadioButton
                     android:id="@+id/rbOscuro"
                     android:layout_marginLeft="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Oscuro"/>
+                    android:text="@string/Oscuro"
+                    android:textColor="@color/LetraGrisClarito"/>
                 </RadioGroup>
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Idioma"
+                    android:textColor="@color/rojoOscuro"
                     android:textSize="20dp"/>
 
                 <Spinner
@@ -294,24 +306,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center|bottom"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnCerrarSesion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/CerrarSesion"
-                    android:layout_marginRight="20dp"/>
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/redondear_botones"
+                    android:backgroundTint="@color/rojoClarito" />
 
                 <Button
                     android:id="@+id/btnAplicarCambios"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/AplicarCambios"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/redondear_botones"
+                    android:backgroundTint="@color/BotonAccederOscuro"/>
             </LinearLayout>
+
         </LinearLayout>
+
+
     </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>

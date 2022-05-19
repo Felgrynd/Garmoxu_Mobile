@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/FondoOscuro"
     tools:context=".InicioSesion">
 
     <LinearLayout
@@ -20,7 +21,7 @@
             android:id="@+id/imgvLogoLogin"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/logodiurno" />
+            android:src="@drawable/logonocturno" />
     </LinearLayout>
 
     <LinearLayout
@@ -35,14 +36,16 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:hint="  Usuario" />
+            android:textColor="@color/LetraBlanco"
+            android:textColorHint="@color/LetraBlanco"
+            android:hint="Usuario" />
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="25dp"
-            android:src="@drawable/iconologinusuario" />
+            android:src="@drawable/iconologinusuariooscuro" />
     </LinearLayout>
 
 
@@ -59,7 +62,9 @@
             android:id="@+id/etPass"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="  Contraseña"
+            android:textColor="@color/LetraBlanco"
+            android:textColorHint="@color/LetraBlanco"
+            android:hint="Contraseña"
             android:layout_marginBottom="25dp"/>
 
         <ImageView
@@ -68,15 +73,16 @@
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="25dp"
-            android:src="@drawable/iconocontrasenaoculta"/>
+            android:src="@drawable/iconocontrasenaocultaoscuro"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/redondear_botones"
+        android:backgroundTint="@color/BotonAccederOscuro"
         android:text="Inicio sesión"/>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,7 +94,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Esta aplicacion esta orientado al uso exclusivo para los empleados al servicio del cliente del Local" />
+            android:textColor="@color/LetraGrisClarito"
+            android:text="Esta aplicacion esta orientado al uso exclusivo para empleados   al servicio del cliente del local" />
     </LinearLayout>
 
 </LinearLayout>

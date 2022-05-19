@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/FondoOscuro">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:id="@+id/imgvPlato"
@@ -23,9 +25,8 @@
     </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -36,12 +37,15 @@
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:text="@string/CodigoPlato"
+                    android:textColor="@color/LetraBlanco"
                     android:layout_marginRight="10dp"/>
 
                 <TextView
                     android:id="@+id/tvCodigoPlato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/LetraGrisClarito"
+                    android:textColor="@color/grisClarito"
                     android:hint="0"/>
 
 
@@ -49,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/PrecioTotal"
+                    android:textColor="@color/LetraBlanco"
                     android:layout_marginLeft="20dp"/>
 
                 <TextView
@@ -56,12 +61,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:textColorHint="@color/LetraGrisClarito"
+                    android:textColor="@color/grisClarito"
                     android:hint="0.00"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:textColor="@color/grisClarito"
                     android:text="€"/>
             </LinearLayout>
 
@@ -75,6 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/NombrePlato"
+                    android:textColor="@color/LetraBlanco"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -82,6 +91,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:textColorHint="@color/LetraGrisClarito"
+                    android:textColor="@color/grisClarito"
                     android:hint="@string/PlatoComida"/>
             </LinearLayout>
 
@@ -95,6 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ListaAlergenos"
+                    android:textColor="@color/LetraBlanco"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -102,6 +114,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:textColorHint="@color/LetraGrisClarito"
+                    android:textColor="@color/grisClarito"
                     android:hint="@string/AlergenosPlato"/>
             </LinearLayout>
 
@@ -115,6 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Descripcion"
+                    android:textColor="@color/LetraBlanco"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -122,6 +137,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:textColorHint="@color/LetraGrisClarito"
+                    android:textColor="@color/grisClarito"
                     android:hint="@string/DescripcionPlato"/>
             </LinearLayout>
         </LinearLayout>

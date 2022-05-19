@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //fija en estatico la orientacion del activity
-        getSupportActionBar().hide(); //quita la barra del titulo
+        // getSupportActionBar().hide(); //quita la barra del titulo
 
         //Es un metodo de splash screen para controlar el tiempo de carga antes de inicar los codigos indicados
         TimerTask task = new TimerTask() {

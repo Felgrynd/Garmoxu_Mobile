@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_categorias"
+    android:background="@color/FondoOscuro"
     android:orientation="vertical">
+
+    <!--tools:context=".fragment_categorias"-->
 
 
     <LinearLayout
@@ -17,16 +19,20 @@
 
         <EditText
             android:id="@+id/etMeterCodigoPlato"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:hint="@string/MeterCodigoPlato"/>
+            android:hint="@string/MeterCodigoPlato"
+            android:textColor="@color/LetraGrisClarito"
+            android:textColorHint="@color/LetraGrisClarito"/>
 
         <EditText
             android:id="@+id/etMeterNombrePlato"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:hint="@string/MeterNombrePlato"
-            android:layout_marginLeft="16dp"/>
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/LetraGrisClarito"
+            android:textColorHint="@color/LetraGrisClarito"/>
     </LinearLayout>
 
 
@@ -37,11 +43,12 @@
         android:text="@string/AplicarFiltros"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="110dp"
-        android:background="@color/rojoOscuro"/>
+        android:background="@drawable/redondear_botones"
+        android:backgroundTint="@color/BotonAplicarFiltros"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="1dp"
         android:background="@color/grisClarito"
         android:layout_marginTop="20dp"/>
 

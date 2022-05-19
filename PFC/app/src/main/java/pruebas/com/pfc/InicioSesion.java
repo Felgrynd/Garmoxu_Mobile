@@ -66,13 +66,13 @@ public class InicioSesion extends AppCompatActivity implements View.OnClickListe
 
                 if(activaVisualContra == false){
 
-                    iconoVisibilidadPass.setImageResource(R.drawable.iconocontrasenavisible);
+                    iconoVisibilidadPass.setImageResource(R.drawable.iconocontrasenaocultaoscuro);
                     activaVisualContra = true;
                     //  SE ENSEÑA CONTRASEÑA
 
                 }
                 else {
-                    iconoVisibilidadPass.setImageResource(R.drawable.iconocontrasenaoculta);
+                    iconoVisibilidadPass.setImageResource(R.drawable.iconocontrasenavisibleoscuro);
                     activaVisualContra = false;
                 }
         }

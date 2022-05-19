@@ -6,12 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.slideshow.SlideshowFragment" >
+    tools:context=".ui.slideshow.SlideshowFragment">
+
+    <!-- El color de fondo se tiene que cambiar en el marco, que es
+    lo que se verá, ya que el fondo del activity también tiene ese
+    color -->
 
     <ListView
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvOtros"/>
+        android:id="@+id/lvOtros" />
 
 </LinearLayout>

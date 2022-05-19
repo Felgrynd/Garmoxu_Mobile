@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/azulClarito"
+    android:background="@color/FondoOscuro"
     tools:context=".ResetearContrasena">
 
     <!-- APARTADO DE LAS CONTRASEÑAS-->
@@ -28,11 +28,13 @@
                 android:layout_height="wrap_content"
                 android:text="Contraseña actual"
                 android:textSize="30dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/rojoOscuro"/>
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/LetraGrisClarito"/>
         </LinearLayout>
 
 
@@ -47,11 +49,13 @@
                 android:layout_height="wrap_content"
                 android:text="Contraseña nueva"
                 android:textSize="30dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/rojoOscuro"/>
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/LetraGrisClarito"/>
         </LinearLayout>
 
 
@@ -66,11 +70,13 @@
                 android:layout_height="wrap_content"
                 android:text="Confirmar nueva contraseña"
                 android:textSize="30dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/rojoOscuro"/>
 
             <EditText
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/LetraGrisClarito"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -94,14 +100,18 @@
                 android:layout_width="170dp"
                 android:layout_height="70dp"
                 android:text="Cancelar"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:background="@drawable/redondear_botones"
+                android:backgroundTint="@color/rojoClarito"/>
 
             <Button
                 android:id="@+id/btnModificarPedido"
                 android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:text="Guardar modificaciones"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/redondear_botones"
+                android:backgroundTint="@color/BotonAccederOscuro"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

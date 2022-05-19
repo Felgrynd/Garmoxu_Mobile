@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/azulClarito"
+    android:background="@color/FondoOscuro"
     tools:context=".DetallesPedido">
 
     // TROZO DE LOS COMBO BOXES / SPINNERS
@@ -43,13 +43,19 @@
         // Lo mismo que el de datos pedidos clientes, este se escribirá por código
         // Para que esté subrayado
 
+
         <TextView
             android:id="@+id/tvSubrayarTexto2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
             android:text="Platos que se han pedido"
-            android:textColor="@color/azulGrana"/>
+            android:textColor="@color/LetraBlanco"
+            android:textSize="30dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#000"/>
 
         <ListView
             android:id="@+id/lvPlatosPedidos"
@@ -65,29 +71,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:gravity="center|bottom"
+        android:layout_marginTop="20dp"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
             android:gravity="center">
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_height="match_parent"
                 android:text="Precio total con IVA:"
                 android:textSize="15dp"
                 android:textColor="@color/rojoOscuro"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/tvPrecioTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0.00"
                 android:textSize="30dp"
+                android:textColor="@color/LetraGrisClarito"
                 android:layout_marginLeft="20dp"/>
 
             <TextView
@@ -95,60 +102,69 @@
                 android:layout_height="match_parent"
                 android:text="€"
                 android:textSize="30dp"
+                android:textColor="@color/LetraGrisClarito"
+                android:layout_marginTop="6dp"
                 android:layout_marginLeft="20dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|bottom"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="15dp"
                 android:text="Precio total sin IVA:"
+                android:gravity="center"
                 android:textColor="@color/rojoOscuro"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/tvPrecioTotalSinIVA"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="0.00"
                 android:textSize="30dp"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="28dp"
+                android:textColor="@color/LetraGrisClarito"/>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="€"
                 android:textSize="30dp"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/LetraGrisClarito"/>
         </LinearLayout>
+
 
         // Apartado de los botones que hay anclados al fondo del activity
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|bottom"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnBorrarPedido"
                 android:layout_width="170dp"
                 android:layout_height="70dp"
                 android:text="Borrar el pedido"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:background="@drawable/redondear_botones"
+                android:backgroundTint="@color/rojoClarito"/>
 
             <Button
                 android:id="@+id/btnModificarPedido"
                 android:layout_width="170dp"
                 android:layout_height="70dp"
                 android:text="Guardar modificaciones"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/redondear_botones"
+                android:backgroundTint="@color/BotonAccederOscuro"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -17,8 +17,8 @@
 
     <!-- APARTADO DE APLICACIÓN, PALABRAS A TRADUCIR EN EL FUTURO -->
     <string name="BuscarPedido">Buscar Pedido</string>
-    <string name="MeterCodigoPlato">Meter codigo plato</string>
-    <string name="MeterNombrePlato">Meter nombre plato</string>
+    <string name="MeterCodigoPlato">Codigo plato</string>
+    <string name="MeterNombrePlato">Nombre plato</string>
     <string name="AplicarFiltros">Aplicar filtros</string>
     <string name="Codigo">Codigo:</string>
     <string name="Cantidad">Cantidad:</string>
