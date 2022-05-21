@@ -9,6 +9,10 @@
     android:padding="15dp"
     tools:context=".ui.slideshow.SlideshowFragment" >
 
+    <!-- El color de fondo se tiene que cambiar en el marco, que es
+    lo que se verá, ya que el fondo del activity también tiene ese
+    color -->
+
     <EditText
 
         android:layout_width="match_parent"

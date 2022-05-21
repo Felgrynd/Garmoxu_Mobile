@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/FondoOscuro"
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/imgvLogoSplash"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/garmoxu_red"
-        />
-
+        android:src="@drawable/logonocturno"/>
 </LinearLayout>

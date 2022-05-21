@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/itmConfiguracion"
-        android:name="pruebas.com.pfc.PerfilConfiguracion"
-        android:label="Configuracion"
-        tools:layout="@layout/fragment_perfil_configuracion" />
+        android:name="pruebas.com.pfc.Ajustes"
+        android:label="Ajustes"
+        tools:layout="@layout/fragment_ajustes" />
 </navigation>

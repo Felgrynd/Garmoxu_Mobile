@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,10 +29,11 @@ import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.util.Base64;
 
-public class InicioSesion extends AppCompatActivity {
+public class InicioSesion extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etUser, etPass;
     private Button btnLogin;
+    private ImageView iconoVisibilidadPass;
 
     private RequestQueue requestQueue;
 
@@ -45,6 +47,7 @@ public class InicioSesion extends AppCompatActivity {
         etUser = findViewById(R.id.etUser);
         etPass = findViewById(R.id.etPass);
         btnLogin = findViewById(R.id.btnLogin);
+        iconoVisibilidadPass = findViewById(R.id.iconoVisibilidadPass);
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -139,5 +142,6 @@ public class InicioSesion extends AppCompatActivity {
 
         return hexString.toString();
     }
+
 
 }

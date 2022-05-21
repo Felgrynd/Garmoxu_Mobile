@@ -27,20 +27,27 @@
         <activity
             android:name=".PlatosDeCategorias"
             android:exported="false" />
+
         <activity
+            android:name=".InicioSesion"
+            android:exported="false" />
+
+            <activity
             android:name=".VerPlatos"
             android:exported="false" />
+
         <activity
             android:name=".MenuMain"
             android:exported="false"
             android:label="@string/title_activity_menu_main"
-            android:theme="@style/Theme.PFC.NoActionBar" />
-        <activity
-            android:name=".InicioSesion"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:theme="@style/Theme.PFC"/>
+
+
+            <activity
+                android:name=".MainActivity"
+                android:exported="true"
+                android:theme="@style/Theme.PFC">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,5 +55,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

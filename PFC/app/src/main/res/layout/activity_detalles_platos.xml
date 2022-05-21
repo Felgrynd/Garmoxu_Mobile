@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/FondoOscuro"
+    tools:context=".DetallesPlatos">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgvPlato"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:src="@drawable/noimage" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Codigo del plato: "
+                android:textColor="@color/LetraBlanco"
+                android:textSize="15dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=""
+                android:textColor="@color/LetraBlanco"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del plato: "
+                android:textSize="15dp"
+                android:textColor="@color/LetraBlanco"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/etNombrePlato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=""
+                android:textColor="@color/LetraBlanco"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categoría: "
+                android:textColor="@color/LetraBlanco"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/spnCategoria"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Precio con IVA: "
+                android:textSize="15dp"
+                android:textColor="@color/LetraBlanco"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/etPrecioConIVA"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint=""
+                android:textColor="@color/LetraBlanco"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lista de alérgenos:"
+                android:textColor="@color/LetraBlanco"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/borde_marcado_caja"
+                android:textColor="@color/LetraBlanco"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción del plato:"
+                android:textColor="@color/LetraBlanco"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/borde_marcado_caja"
+                android:textColor="@color/LetraBlanco"/>
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|bottom"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Cancelar"
+                    android:background="@drawable/redondear_botones"
+                    android:backgroundTint="@color/rojoClarito"
+                    android:layout_marginRight="10dp"/>
+
+                <Button
+                    android:id="@+id/btnModificarPlatos"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Guardar cambios"
+                    android:background="@drawable/redondear_botones"
+                    android:backgroundTint="@color/BotonAccederOscuro"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

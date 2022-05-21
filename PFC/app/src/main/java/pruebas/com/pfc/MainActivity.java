@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //fija en estatico la orientacion del activity
-        getSupportActionBar().hide(); //quita la barra del titulo
+        // getSupportActionBar().hide(); //quita la barra del titulo
 
         //Es un metodo de splash screen para controlar el tiempo de carga antes de inicar los codigos indicados
         TimerTask task = new TimerTask() {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         };
         Timer timer = new Timer();
         timer.schedule(task, 2500);
+
 
     }
 }

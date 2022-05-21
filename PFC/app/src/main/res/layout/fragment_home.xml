@@ -7,14 +7,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".ui.home.HomeFragment" >
+    android:background="@color/FondoOscuro"
+    tools:context=".ui.home.HomeFragment">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Buscar Pedido"
-        android:id="@+id/etBuscarMesaPropio"
-        />
+        android:hint="@string/BuscarPedido"
+        android:textColor="@color/LetraBlanco"
+        android:textColorHint="@color/LetraBlanco"
+        android:id="@+id/etBuscarMesaPropio"/>
 
     <ScrollView
         android:layout_width="match_parent"
