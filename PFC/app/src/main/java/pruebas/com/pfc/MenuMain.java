@@ -1,8 +1,12 @@
 package pruebas.com.pfc;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,14 +46,25 @@ public class MenuMain extends AppCompatActivity {
         //ivPuesto.setImageResource(R.drawable.ic_launcher_foreground);
         tvUser.setText(getIntent().getStringExtra("NombreUsuario"));
         tvNombre.setText(getIntent().getStringExtra("NombreEmpleado"));
+        Bitmap bitmap = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("ImagenUsuario"), 0, getIntent().getByteArrayExtra("ImagenUsuario").length);
+        ivPuesto.setImageBitmap(bitmap);
 //1------*/
 
         setSupportActionBar(binding.appBarMenuMain.toolbar);
+        //Evento del boton flotante
         binding.appBarMenuMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                 */
+                Intent intent = new Intent().setClass(MenuMain.this, DetallesPedidos.class);
+                intent.putExtra("NombreUsuario", getIntent().getStringExtra("NombreUsuario"));
+                intent.putExtra("btnDer", "Crear \nPedido");
+                intent.putExtra("btnIzq", "Cancelar \nPedido");
+                intent.putExtra("esNuevoPedido", true);
+                startActivity(intent);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -57,7 +72,7 @@ public class MenuMain extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.itmMenuMain, R.id.itmPlatos, R.id.itmOtrosClientes)
+                R.id.itmMenuMain, R.id.itmPlatos, R.id.itmOtrosClientes, R.id.itmConfiguracion)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_main);

@@ -6,12 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".ui.slideshow.SlideshowFragment" >
 
-    <ListView
-        android:layout_margin="5dp"
+    <EditText
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvOtros"/>
+        android:id="@+id/etBuscarMesa"
+        android:hint="Buscar Mesa"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/svMesas"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llMesas">
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

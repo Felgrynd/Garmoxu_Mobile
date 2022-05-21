@@ -20,8 +20,8 @@
 <!--Hayq que posicionarlo en la parte de abajo(gravity botton)-->
     <group>
         <item
-            android:id="@+id/itmAjustes"
+            android:id="@+id/itmConfiguracion"
             android:icon="@drawable/side_nav_bar"
-            android:title="Ajustes"/>
+            android:title="Configuracion"/>
     </group>
 </menu>
