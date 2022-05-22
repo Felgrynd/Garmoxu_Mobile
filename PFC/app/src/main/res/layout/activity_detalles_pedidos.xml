@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
+    android:background="@color/FondoOscuro"
     tools:context=".DetallesPedidos">
 
     <LinearLayout
@@ -117,16 +118,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/custom_button_a"
             android:text="Borrar \nPedido"
             android:layout_marginHorizontal="10dp"
             android:id="@+id/btnCancelarPedido"
+            android:background="@drawable/redondear_botones"
+            android:backgroundTint="@color/rojoClarito"
             />
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/custom_button_a"
+            android:background="@drawable/redondear_botones"
+            android:backgroundTint="@color/BotonAccederOscuro"
             android:text="Guardar \nModificacion"
             android:layout_marginHorizontal="10dp"
             android:id="@+id/btnConfirmarPedido"

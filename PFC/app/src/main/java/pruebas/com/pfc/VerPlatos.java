@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 public class VerPlatos extends AppCompatActivity {
 
-    private LinearLayout llDiponobilidad, llAlergenos;
+    private LinearLayout llDiponobilidad;
     private TextView tvIdPedido, tvNombre, tvPrecio, tvDescripcion;
     private ImageView ivImagenPlato;
 
@@ -34,7 +34,6 @@ public class VerPlatos extends AppCompatActivity {
         setContentView(R.layout.activity_ver_platos);
 
         llDiponobilidad = findViewById(R.id.llDiponobilidad);
-        llAlergenos = findViewById(R.id.llAlergenos);
         tvIdPedido = findViewById(R.id.tvIdPedido);
         tvNombre = findViewById(R.id.tvNombre);
         tvPrecio = findViewById(R.id.tvPrecio);

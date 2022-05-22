@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:id="@+id/llDiponobilidad"
+    android:background="@color/FondoOscuro"
     tools:context=".VerPlatos">
 
     <TextView
@@ -28,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ivImagenPlato"
+            android:src="@drawable/noimage"
             />
     </LinearLayout>
 
@@ -48,23 +50,48 @@
         android:gravity="right"
         />
 
-    <HorizontalScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/llAlergenos"
-            android:orientation="horizontal"/>
-    </HorizontalScrollView>
+        android:layout_weight="3"
+        android:orientation="vertical">
 
-    <TextView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lista de alérgenos:"
+            android:textColor="@color/LetraBlanco"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/borde_marcado_caja"
+            android:textColor="@color/LetraBlanco"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:id="@+id/tvDescripcion"
-        android:text="Descripcion"
-        />
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción del plato:"
+            android:textColor="@color/LetraBlanco"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/tvDescripcion"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/borde_marcado_caja"
+            android:textColor="@color/LetraBlanco"/>
+    </LinearLayout>
 
 </LinearLayout>
