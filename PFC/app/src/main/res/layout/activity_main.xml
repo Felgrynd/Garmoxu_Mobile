@@ -10,8 +10,9 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imgvLogoSplash"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/logonocturno"/>
+        android:src="@drawable/garmoxu_red"
+        />
+
 </LinearLayout>

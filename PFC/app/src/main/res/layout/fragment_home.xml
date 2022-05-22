@@ -7,21 +7,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    android:background="@color/FondoOscuro"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment" >
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/BuscarPedido"
-        android:textColor="@color/LetraBlanco"
-        android:textColorHint="@color/LetraBlanco"
-        android:id="@+id/etBuscarMesaPropio"/>
+        android:hint="Buscar Pedido"
+        android:id="@+id/etBuscarMesaPropio"
+        />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/llMesasPropias">
-    </LinearLayout>
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llMesasPropias"/>
+    </ScrollView>
+
 </LinearLayout>

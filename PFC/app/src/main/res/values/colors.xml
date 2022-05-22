@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
     <color name="azulClarito">#DDFFFF</color>
     <color name="rojoOscuro">#BD1757</color>
     <color name="rojoClarito">#C50A0A</color>
@@ -21,6 +23,5 @@
     <color name="LetraGrisClarito">#FF8E8A8A</color>
     <color name="BotonAccederOscuro">#2E8B57</color>
     <color name="BotonAplicarFiltros">#FF1A39EA</color>
-
     <!-- COLORES PARA TEMA CLARO -->
 </resources>

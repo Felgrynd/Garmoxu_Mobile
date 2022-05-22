@@ -12,36 +12,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFC"
         android:usesCleartextTraffic="true">
-
         <activity
-            android:name=".DetallesPlatos"
+            android:name=".VerCategorias"
             android:exported="false" />
-
         <activity
-            android:name=".DetallesPedido"
-            android:exported="true"/>
-
-        <activity
-            android:name=".ResetearContrasena"
-            android:exported="false"
-            android:theme="@style/Theme.PFC" />
-
-        <activity
-            android:name=".InicioSesion"
+            android:name=".CustomAdapter"
             android:exported="false" />
-
+        <activity
+            android:name=".DetallesPedidos"
+            android:exported="false" />
+        <activity
+            android:name=".CambiarPasswd"
+            android:exported="false" />
+        <activity
+            android:name=".PlatosDeCategorias"
+            android:exported="false" />
+        <activity
+            android:name=".VerPlatos"
+            android:exported="false" />
         <activity
             android:name=".MenuMain"
             android:exported="false"
             android:label="@string/title_activity_menu_main"
-            android:theme="@style/Theme.PFC"/>
-
-
-            <activity
-                android:name=".MainActivity"
-                android:exported="true"
-                android:theme="@style/Theme.PFC">
-
+            android:theme="@style/Theme.PFC.NoActionBar" />
+        <activity
+            android:name=".InicioSesion"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,4 +48,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

@@ -4,34 +4,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
+    android:background="@color/FondoGrisSecundario"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical"
-    android:background="@color/FondoGrisSecundario"
+    android:id="@+id/llHeader"
     android:gravity="bottom">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/fotousuariodefectoOscuro"
-        android:contentDescription="@string/nav_header_desc"
-        android:id="@+id/ivPuesto"/>
-
-    <TextView
-        android:id="@+id/tvUser"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/Usuario"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom|left"
+        >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/NombreApellidosDelUsuario"
-        android:id="@+id/tvNombre" />
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:srcCompat="@drawable/fotousuariodefectooscuro"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/nav_header_desc"
+            android:id="@+id/ivPuesto" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            >
+            <TextView
+                android:id="@+id/tvUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="usuario"
+                android:layout_marginVertical="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nombre y apellidos del usuario"
+                android:id="@+id/tvNombre" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

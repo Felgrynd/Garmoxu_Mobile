@@ -4,58 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/FondoOscuro"
-    android:orientation="vertical">
-
-    <!--tools:context=".fragment_categorias"-->
-
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".ui.gallery.GalleryFragment" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etMeterCodigoPlato"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/MeterCodigoPlato"
-            android:textColor="@color/LetraGrisClarito"
-            android:textColorHint="@color/LetraGrisClarito"/>
+        <Button
+            android:id="@+id/btnBuscarIdPlato"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:text="Buscar Por Id"
+            android:background="@drawable/custom_button_a"
+            />
 
-        <EditText
-            android:id="@+id/etMeterNombrePlato"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/MeterNombrePlato"
-            android:layout_marginLeft="16dp"
-            android:textColor="@color/LetraGrisClarito"
-            android:textColorHint="@color/LetraGrisClarito"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnCategorias"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:text="Buscar Por Categorias"
+            android:background="@drawable/custom_button_a"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnVerTodosPlatos"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:text="Ver Toda la Lista de Platos"
+            android:background="@drawable/custom_button_a"
+            />
+
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/btnAplicarCambios"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
-        android:text="@string/AplicarFiltros"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="110dp"
-        android:background="@drawable/redondear_botones"
-        android:backgroundTint="@color/BotonAplicarFiltros"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grisClarito"
-        android:layout_marginTop="20dp"/>
-
-
-    <ListView
-        android:id="@+id/lvListadoPlatos"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 </LinearLayout>

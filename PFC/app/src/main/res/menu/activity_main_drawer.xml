@@ -34,11 +34,8 @@
         <item
             android:title=""/>
         <item
-            android:title=""/>
-
-        <item
-            android:id="@+id/itmAjustes"
+            android:id="@+id/itmConfiguracion"
             android:icon="@drawable/iconoajustes"
-            android:title="@string/Ajustes"/>
+            android:title="Configuracion"/>
     </group>
 </menu>
