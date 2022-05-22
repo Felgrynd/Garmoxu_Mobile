@@ -5,18 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="25dp"
+    android:background="@color/FondoOscuro"
     tools:context=".InicioSesion">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
+        android:gravity="center"
         android:orientation="horizontal"
         >
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher_foreground"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/garmoxu_red"
             />
     </LinearLayout>
 
@@ -27,42 +30,38 @@
         android:orientation="vertical"
         android:gravity="center"
         >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="50dp"
-            android:gravity="center"
-            android:layout_marginBottom="50dp"
-            />
         <EditText
+            android:text="Emple1"
             android:id="@+id/etUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="  User"
+            android:hint=" User"
             android:layout_marginHorizontal="25dp"
             android:layout_marginBottom="25dp"
             />
-        <EditText
-            android:id="@+id/etPass"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="  Password"
+            app:passwordToggleEnabled="true"
+            android:hint="Contraseña Actual"
             android:layout_marginHorizontal="25dp"
             android:layout_marginBottom="25dp"
-            android:inputType="textPassword"
-            />
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text="1234abcd"
+                android:id="@+id/etPass"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Login"
-            />
-        <Button
-            android:id="@+id/btnPrueba"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Prueba"
+            android:background="@drawable/redondear_botones"
+            android:backgroundTint="@color/BotonAccederOscuro"
+            android:text="Inicio sesión"
             />
     </LinearLayout>
 

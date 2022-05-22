@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/FondoOscuro"
     tools:context=".MenuMain">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -31,6 +32,6 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/nuevo" />
+        app:srcCompat="@drawable/iconoaanadir"  />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

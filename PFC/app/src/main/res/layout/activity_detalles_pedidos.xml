@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/FondoOscuro"
+    tools:context=".DetallesPedidos">
+
+    <LinearLayout
+        android:gravity="left|center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:text="Numero de la Mesa:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            />
+        <Spinner
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_weight="20"
+            android:layout_height="wrap_content"
+            android:id="@+id/spIdMesa"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="left|center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:text="Estado del pedido:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            />
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="27"
+            android:layout_height="wrap_content"
+            android:id="@+id/spEstado"
+            />
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:id="@+id/lvPedidosPlatos"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btnAddPlato"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="+"
+            android:textSize="25dp"
+            android:background="@drawable/custom_button_a"
+            android:textColor="@color/white"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/etPrueba"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="3"
+        >
+        <TextView
+            android:id="@+id/tvPrecioTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio Total: 0.00€"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="4"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Borrar \nPedido"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/btnCancelarPedido"
+            android:background="@drawable/redondear_botones"
+            android:backgroundTint="@color/rojoClarito"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/redondear_botones"
+            android:backgroundTint="@color/BotonAccederOscuro"
+            android:text="Guardar \nModificacion"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/btnConfirmarPedido"
+            />
+    </LinearLayout>
+
+</LinearLayout>

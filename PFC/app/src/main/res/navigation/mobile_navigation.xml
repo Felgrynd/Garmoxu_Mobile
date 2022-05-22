@@ -22,4 +22,10 @@
         android:name="pruebas.com.pfc.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/itmConfiguracion"
+        android:name="pruebas.com.pfc.PerfilConfiguracion"
+        android:label="Configuracion"
+        tools:layout="@layout/fragment_perfil_configuracion" />
 </navigation>

@@ -11,6 +11,9 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static String DOMAIN = "http://192.168.1.36/garmoxu/";
+    //public final static String DOMAIN = "http://192.168.247.9/garmoxu/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
