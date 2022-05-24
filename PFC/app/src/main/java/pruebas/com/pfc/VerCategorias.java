@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,8 +58,10 @@ public class VerCategorias extends AppCompatActivity {
                     public void onResponse(JSONObject response){
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(200, 500);
                         params.weight = 1;
-                        params.leftMargin = 5;
-                        params.rightMargin = 5;
+                        params.topMargin = 20;
+                        params.leftMargin = 20;
+                        params.rightMargin = 20;
+                        params.bottomMargin = 20;
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
@@ -66,7 +69,8 @@ public class VerCategorias extends AppCompatActivity {
                                 if(i % 2 == 0){
                                     llDynamic = new LinearLayout(VerCategorias.this);
                                     llDynamic.setOrientation(LinearLayout.HORIZONTAL);
-                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 500));
+                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                                    llDynamic.setGravity(Gravity.CENTER);
                                     llCategorias.addView(llDynamic);
                                 }
                                 btnDynamic = new Button(VerCategorias.this);
@@ -74,6 +78,7 @@ public class VerCategorias extends AppCompatActivity {
                                 btnDynamic.setId(Integer.parseInt(jsonData.getJSONObject(i).getString("IdCategoria")));
                                 btnDynamic.setOnClickListener(dynamicOnClick(jsonData.getJSONObject(i).getString("IdCategoria")));
                                 btnDynamic.setLayoutParams(params);
+                                btnDynamic.setBackgroundResource(R.drawable.custom_button_a);
 
                                 llDynamic.addView(btnDynamic);
                             }

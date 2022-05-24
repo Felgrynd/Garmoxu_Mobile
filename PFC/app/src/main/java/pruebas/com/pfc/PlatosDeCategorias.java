@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -61,10 +62,12 @@ public class PlatosDeCategorias extends AppCompatActivity {
                 new Response.Listener<JSONObject>(){
                     @Override
                     public void onResponse(JSONObject response){
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(200, 500);
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, 500);
                         params.weight = 1;
-                        params.leftMargin = 5;
-                        params.rightMargin = 5;
+                        params.topMargin = 20;
+                        params.leftMargin = 20;
+                        params.rightMargin = 20;
+                        params.bottomMargin = 20;
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
@@ -72,7 +75,8 @@ public class PlatosDeCategorias extends AppCompatActivity {
                                 if(i % 2 == 0){
                                     llDynamic = new LinearLayout(PlatosDeCategorias.this);
                                     llDynamic.setOrientation(LinearLayout.HORIZONTAL);
-                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 500));
+                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                                    llDynamic.setGravity(Gravity.CENTER);
                                     llPlatosDeCategorias.addView(llDynamic);
                                 }
                                 btnDynamic = new Button(PlatosDeCategorias.this);
@@ -80,6 +84,7 @@ public class PlatosDeCategorias extends AppCompatActivity {
                                 btnDynamic.setText(jsonData.getJSONObject(i).getString("Nombre"));
                                 btnDynamic.setTag(jsonData.getJSONObject(i).getString("IdPlatoComida"));
                                 btnDynamic.setLayoutParams(params);
+                                btnDynamic.setBackgroundResource(R.drawable.custom_button_a);
                                 if(getIntent().getExtras().getBoolean("esConsulta"))
                                     btnDynamic.setOnClickListener(dynamicOnClickConsultarPlato(jsonData.getJSONObject(i).getString("IdPlatoComida")));
                                 else

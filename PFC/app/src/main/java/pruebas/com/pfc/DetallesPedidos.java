@@ -1,10 +1,12 @@
 package pruebas.com.pfc;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,6 +31,9 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -52,6 +57,7 @@ public class DetallesPedidos extends AppCompatActivity {
     private ArrayList<String> mesasDisponibles;
     private ArrayAdapter<String> arrayAdapterMesasDisponibles;
     private ArrayAdapter<String> arrayAdapterPedidoEstado;
+    private LocalDateTime ldt;
 
     private final DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
@@ -80,6 +86,8 @@ public class DetallesPedidos extends AppCompatActivity {
         formatTime = new SimpleDateFormat("HH:mm:ss");
         firstDelete = true;
         mesasDisponibles = new ArrayList<>();
+
+        arrayAdapterMesasDisponibles = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, mesasDisponibles);
 
         btnCancelarPedido.setText(getIntent().getStringExtra("btnIzq"));
         btnConfirmarPedido.setText(getIntent().getStringExtra("btnDer"));
@@ -110,6 +118,53 @@ public class DetallesPedidos extends AppCompatActivity {
         btnConfirmarPedido.setOnClickListener(platosDelPedido(getIntent().getStringExtra("btnDer")));
         btnCancelarPedido.setOnClickListener(btnLeft(getIntent().getStringExtra("btnIzq"), getIntent().getExtras().getBoolean("esNuevoPedido")));
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O) //DateTimeFormatter.ofPattern
+    private boolean mesaDisponibleRango2h(LocalDateTime now, String fecha, String hora){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        ldt = LocalDateTime.parse(fecha + " " + hora, dtf);
+
+        long minutes = ChronoUnit.MINUTES.between(ldt, now);
+
+        if(minutes > 120) return true;
+        return false;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O) //LocalDateTime.now()
+    private void verificarReservaMesa(){
+        ArrayList<String> mesasDisponiblesReservaVerificada = new ArrayList<>();
+        ldt = LocalDateTime.now();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                MainActivity.DOMAIN + "reservas_mesas.php?", //falta añadir cosas
+                null,
+                new Response.Listener<JSONObject>(){
+                    @Override
+                    public void onResponse(JSONObject response){
+                        try {
+                            JSONArray jsonData = response.getJSONArray("data");
+                            for (int i = 0; i<jsonData.length(); i++){
+                                if(mesasDisponibles.contains(jsonData.getJSONObject(i).getString("IdMesa"))){
+                                    if(mesaDisponibleRango2h(ldt, jsonData.getJSONObject(i).getString("Fecha"),jsonData.getJSONObject(i).getString("Hora")))
+                                        mesasDisponiblesReservaVerificada.add(jsonData.getJSONObject(i).getString("IdMesa"));
+                                }else mesasDisponiblesReservaVerificada.add(jsonData.getJSONObject(i).getString("IdMesa"));
+                            }
+                            spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
+                        } catch (Exception e) {
+                            Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error){
+                //Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetallesPedidos.this, "Actualemte no hay mesas disponibles", Toast.LENGTH_SHORT).show();
+            }
+        }
+        );
+        requestQueue.add(jsonObjectRequest);
     }
 
     private void setEstadoMesa(String estado, String idMesa){
@@ -317,9 +372,7 @@ public class DetallesPedidos extends AppCompatActivity {
                             for (int i = 0; i<jsonData.length(); i++){
                                 mesasDisponibles.add(jsonData.getJSONObject(i).getString("IdMesa"));
                             }
-                            arrayAdapterMesasDisponibles = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, mesasDisponibles);
                             spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
-
                         } catch (Exception e) {
                             Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
