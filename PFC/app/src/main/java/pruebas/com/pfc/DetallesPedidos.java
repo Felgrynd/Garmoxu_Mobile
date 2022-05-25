@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -96,6 +97,7 @@ public class DetallesPedidos extends AppCompatActivity {
         date = new Date();
         if(getIntent().getExtras().getBoolean("esNuevoPedido")) {
             setIdPedidoMax();
+
         }else {
             generarPlatosDelPedido();
             mesasDisponibles.add(getIntent().getStringExtra("idMesa"));
@@ -103,8 +105,9 @@ public class DetallesPedidos extends AppCompatActivity {
         addSpinnerEstadoPedido();
         addSpinnerMesaDisponibles();
 
-        ArrayAdapter<String> arrayAdapterMesasDisponibles = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, mesasDisponibles);
-        spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
+        for (String s:mesasDisponibles) {
+            Toast.makeText(this, ""+s.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         customAdapter = new CustomAdapter(this, R.layout.activity_custom_adapter, listaDePlatosDelPedido);
         lvPedidosPlatos.setAdapter(customAdapter);
@@ -115,6 +118,18 @@ public class DetallesPedidos extends AppCompatActivity {
             public void onChanged() {
                 //super.onChanged();
                 calcularTotalPedido();
+            }
+        });
+
+        spIdMesa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(DetallesPedidos.this, ""+spIdMesa.getSelectedItemPosition()+" : " +spIdMesa.getSelectedItem(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
@@ -137,8 +152,7 @@ public class DetallesPedidos extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O) //LocalDateTime.now()
     private void addSpinnerMesaDisponibles(){
         ldt = LocalDateTime.now();
-
-
+        mesasDisponibles.add("0");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 MainActivity.DOMAIN + "reservas_mesas.php?FechaActual=" + formatDate.format(date).toString() + "&FechaPlus=" + "2022-05-27",//formatDate.format(LocalDateTime.from(date.toInstant()).plusDays(1)).toString(), //falta añadir cosas la fecha de hoy 'formatDate.format(date).toString()' y la fecha siguiente 'LocalDateTime.from(date.toInstant()).plusDays(1);'
@@ -153,11 +167,13 @@ public class DetallesPedidos extends AppCompatActivity {
                                         if (!mesaDisponibleRango2h(ldt, jsonData.getJSONObject(i).getString("Fecha"), jsonData.getJSONObject(i).getString("Hora")))
                                             mesasDisponibles.remove(jsonData.getJSONObject(i).getString("IdMesa"));
                             }
-                            //
+                            mesasDisponibles.remove("0");
                         } catch (Exception e) {
                             etPrueba.setText(etPrueba.getText() + "\nException2: "+e.getMessage().toString());
                             Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
+                        ArrayAdapter<String> arrayAdapterMesasDisponibles = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, mesasDisponibles);
+                        spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
                     }
                 }, new Response.ErrorListener(){
             @Override
