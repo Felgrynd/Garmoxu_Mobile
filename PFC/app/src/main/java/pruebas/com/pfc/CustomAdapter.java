@@ -41,6 +41,9 @@ public class CustomAdapter extends ArrayAdapter<Plato> {
 
         tvTexto.setText(getItem(pos).getIdPlato()+" - "+getItem(pos).getNombre());
         tvNumb.setText(getItem(pos).getCantidad()+"");
+        if(getItem(pos).getBitmap() == null) ivPedidoPlado.setImageResource(R.drawable.noimage);
+        else ivPedidoPlado.setImageBitmap(getItem(pos).getBitmap());
+        ivPedidoPlado.setScaleType(ImageView.ScaleType.CENTER);
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override

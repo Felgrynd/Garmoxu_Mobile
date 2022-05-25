@@ -1,5 +1,7 @@
 package pruebas.com.pfc;
 
+import android.graphics.Bitmap;
+
 import java.text.DecimalFormat;
 
 public class Plato {
@@ -20,6 +22,8 @@ public class Plato {
         return cantidad;
     }
 
+    public Bitmap getBitmap(){ return bitmap; }
+
     public double getTotal(){
         return getDoubleTwoDecimalFormat((precio * cantidad));
     }
@@ -36,14 +40,16 @@ public class Plato {
     private double precio;
     private String nombre;
     private int cantidad;
+    private Bitmap bitmap;
 
     private final DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
-    public Plato(String idPlato, String nombre, int cantidad, double precio){
+    public Plato(String idPlato, String nombre, int cantidad, double precio, Bitmap bitmap){
         this.idPlato = idPlato;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.bitmap = bitmap;
     }
 
 }

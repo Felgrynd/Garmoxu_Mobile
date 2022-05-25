@@ -70,7 +70,7 @@ public class InicioSesion extends AppCompatActivity {
                         progressBarLoading.dismissDialog();
                         //alert.dismiss();
                     }
-                }, 1000);
+                }, 2500);
             }
         });
 

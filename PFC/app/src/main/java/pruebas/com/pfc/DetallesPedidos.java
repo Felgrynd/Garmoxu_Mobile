@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +37,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,10 +56,7 @@ public class DetallesPedidos extends AppCompatActivity {
     private SimpleDateFormat formatDate;
     private SimpleDateFormat formatTime;
     private Date date;
-    private boolean firstDelete;
     private ArrayList<String> mesasDisponibles;
-    private ArrayAdapter<String> arrayAdapterMesasDisponibles;
-    private ArrayAdapter<String> arrayAdapterPedidoEstado;
     private LocalDateTime ldt;
 
     private final DecimalFormat decimalFormat = new DecimalFormat("0.00");
@@ -64,6 +64,7 @@ public class DetallesPedidos extends AppCompatActivity {
     public static ArrayList<Plato> listaDePlatosDelPedido = new ArrayList<>();
     public static CustomAdapter customAdapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.O) //addSpinnerMesaDisponibles()
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,24 +85,26 @@ public class DetallesPedidos extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(DetallesPedidos.this);
         formatDate = new SimpleDateFormat("yyyy-MM-dd");
         formatTime = new SimpleDateFormat("HH:mm:ss");
-        firstDelete = true;
         mesasDisponibles = new ArrayList<>();
 
-        arrayAdapterMesasDisponibles = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, mesasDisponibles);
+        getMesasDisponibles();
 
         btnCancelarPedido.setText(getIntent().getStringExtra("btnIzq"));
         btnConfirmarPedido.setText(getIntent().getStringExtra("btnDer"));
         if(!getIntent().getExtras().getBoolean("tusPedidos")) btnCancelarPedido.setVisibility(View.GONE);
 
+        date = new Date();
         if(getIntent().getExtras().getBoolean("esNuevoPedido")) {
             setIdPedidoMax();
-            date = new Date();
         }else {
             generarPlatosDelPedido();
             mesasDisponibles.add(getIntent().getStringExtra("idMesa"));
         }
         addSpinnerEstadoPedido();
-        addSpinnerMesasDisponibles();
+        addSpinnerMesaDisponibles();
+
+        ArrayAdapter<String> arrayAdapterMesasDisponibles = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, mesasDisponibles);
+        spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
 
         customAdapter = new CustomAdapter(this, R.layout.activity_custom_adapter, listaDePlatosDelPedido);
         lvPedidosPlatos.setAdapter(customAdapter);
@@ -122,23 +125,23 @@ public class DetallesPedidos extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O) //DateTimeFormatter.ofPattern
     private boolean mesaDisponibleRango2h(LocalDateTime now, String fecha, String hora){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         ldt = LocalDateTime.parse(fecha + " " + hora, dtf);
 
         long minutes = ChronoUnit.MINUTES.between(ldt, now);
 
-        if(minutes > 120) return true;
+        if(minutes >= 120) return true;
         return false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O) //LocalDateTime.now()
-    private void verificarReservaMesa(){
-        ArrayList<String> mesasDisponiblesReservaVerificada = new ArrayList<>();
+    private void addSpinnerMesaDisponibles(){
         ldt = LocalDateTime.now();
+
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                MainActivity.DOMAIN + "reservas_mesas.php?", //falta añadir cosas
+                MainActivity.DOMAIN + "reservas_mesas.php?FechaActual=" + formatDate.format(date).toString() + "&FechaPlus=" + "2022-05-27",//formatDate.format(LocalDateTime.from(date.toInstant()).plusDays(1)).toString(), //falta añadir cosas la fecha de hoy 'formatDate.format(date).toString()' y la fecha siguiente 'LocalDateTime.from(date.toInstant()).plusDays(1);'
                 null,
                 new Response.Listener<JSONObject>(){
                     @Override
@@ -146,13 +149,13 @@ public class DetallesPedidos extends AppCompatActivity {
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
-                                if(mesasDisponibles.contains(jsonData.getJSONObject(i).getString("IdMesa"))){
-                                    if(mesaDisponibleRango2h(ldt, jsonData.getJSONObject(i).getString("Fecha"),jsonData.getJSONObject(i).getString("Hora")))
-                                        mesasDisponiblesReservaVerificada.add(jsonData.getJSONObject(i).getString("IdMesa"));
-                                }else mesasDisponiblesReservaVerificada.add(jsonData.getJSONObject(i).getString("IdMesa"));
+                                    if (mesasDisponibles.contains(jsonData.getJSONObject(i).getString("IdMesa")))
+                                        if (!mesaDisponibleRango2h(ldt, jsonData.getJSONObject(i).getString("Fecha"), jsonData.getJSONObject(i).getString("Hora")))
+                                            mesasDisponibles.remove(jsonData.getJSONObject(i).getString("IdMesa"));
                             }
-                            spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
+                            //
                         } catch (Exception e) {
+                            etPrueba.setText(etPrueba.getText() + "\nException2: "+e.getMessage().toString());
                             Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -160,6 +163,7 @@ public class DetallesPedidos extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error){
                 //Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
+                etPrueba.setText(etPrueba.getText() + "\nVolleyError: "+error.getMessage().toString());
                 Toast.makeText(DetallesPedidos.this, "Actualemte no hay mesas disponibles", Toast.LENGTH_SHORT).show();
             }
         }
@@ -355,11 +359,11 @@ public class DetallesPedidos extends AppCompatActivity {
 
     private void addSpinnerEstadoPedido(){
         String[] pedidoEstado = {"En Proceso", "Finalizado"};
-        arrayAdapterPedidoEstado = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, pedidoEstado);
+        ArrayAdapter<String> arrayAdapterPedidoEstado = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, pedidoEstado);
         spEstado.setAdapter(arrayAdapterPedidoEstado);
     }
 
-    private void addSpinnerMesasDisponibles(){
+    private void getMesasDisponibles(){
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 MainActivity.DOMAIN + "estado_mesas.php",
@@ -372,7 +376,7 @@ public class DetallesPedidos extends AppCompatActivity {
                             for (int i = 0; i<jsonData.length(); i++){
                                 mesasDisponibles.add(jsonData.getJSONObject(i).getString("IdMesa"));
                             }
-                            spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
+                            //spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
                         } catch (Exception e) {
                             Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
@@ -428,12 +432,18 @@ public class DetallesPedidos extends AppCompatActivity {
                 MainActivity.DOMAIN + "pedidos_platos.php?IdPedido=" + getIntent().getStringExtra("idTag"),
                 null,
                 new Response.Listener<JSONObject>(){
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onResponse(JSONObject response){
+                        Bitmap bitmap = null;
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
-                                listaDePlatosDelPedido.add(new Plato(jsonData.getJSONObject(i).getString("IdPlatoComida"),jsonData.getJSONObject(i).getString("Nombre"),Integer.parseInt(jsonData.getJSONObject(i).getString("Cantidad")),getDoubleTwoDecimalFormat(jsonData.getJSONObject(i).getString("Precio"))));
+                                if(!jsonData.getJSONObject(i).getString("ImagenPlato").equals("")) {
+                                    byte[] byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenCategoria"));
+                                    bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                                }else bitmap = null;
+                                listaDePlatosDelPedido.add(new Plato(jsonData.getJSONObject(i).getString("IdPlatoComida"),jsonData.getJSONObject(i).getString("Nombre"),Integer.parseInt(jsonData.getJSONObject(i).getString("Cantidad")),getDoubleTwoDecimalFormat(jsonData.getJSONObject(i).getString("Precio")), bitmap));
                                 //Toast.makeText(DetallesPedidos.this, ""+getDoubleTwoDecimalFormat(jsonData.getJSONObject(i).getString("Precio")), Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
