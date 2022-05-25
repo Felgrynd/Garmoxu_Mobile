@@ -16,6 +16,8 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.util.ArrayList;
 
 /**
@@ -27,7 +29,7 @@ public class PerfilConfiguracion extends Fragment {
 
     private Spinner spnIdiomas;
     private ImageView ivPerfil;
-    private EditText etNombreUsuario, etNombreEmpleado;
+    private TextInputEditText etNombreUsuario, etNombreEmpleado;
     private Switch swReset;
     private RadioButton rbClaro, rbOscuro;
 
