@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="IdPLato"
+        android:text="@string/IdPlato"
         android:gravity="center"
         android:id="@+id/tvIdPedido"
         />
@@ -38,7 +38,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/tvNombre"
-        android:text="Nombre"
+        android:text="@string/Nombre"
         />
 
     <TextView
@@ -46,7 +46,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/tvPrecio"
-        android:text="Precio €"
+        android:text="@string/PrecioASecas"
         android:gravity="right"
         />
 
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lista de alérgenos:"
+            android:text="@string/ListaAlergenos"
             android:textColor="@color/LetraBlanco"
             android:textSize="20dp"/>
 
@@ -81,7 +81,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción del plato:"
+            android:text="@string/DescripcionPlato"
             android:textColor="@color/LetraBlanco"
             android:textSize="20dp"/>
 

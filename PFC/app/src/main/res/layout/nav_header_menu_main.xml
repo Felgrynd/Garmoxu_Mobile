@@ -43,14 +43,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/nav_header_vertical_spacing"
-                android:text="usuario"
+                android:text="@string/Usuario"
                 android:layout_marginVertical="10dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nombre y apellidos del usuario"
+                android:text="@string/NombreApellidosDelUsuario"
                 android:id="@+id/tvNombre" />
         </LinearLayout>
     </LinearLayout>

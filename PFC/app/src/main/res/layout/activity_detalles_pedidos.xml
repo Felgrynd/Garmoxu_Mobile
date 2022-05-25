@@ -20,8 +20,8 @@
             android:layout_width="0dp"
             android:layout_weight="30"
             android:layout_height="wrap_content"
-            android:text="Numero de la Mesa:"
-            android:textColor="@color/black"
+            android:text="@string/NumeroMesa"
+            android:textColor="@color/LetraBlanco"
             android:textSize="20dp"
             />
         <Spinner
@@ -45,8 +45,8 @@
             android:layout_width="0dp"
             android:layout_weight="30"
             android:layout_height="wrap_content"
-            android:text="Estado del pedido:"
-            android:textColor="@color/black"
+            android:text="@string/EstadoPedido"
+            android:textColor="@color/LetraBlanco"
             android:textSize="20dp"
             />
         <Spinner
@@ -86,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/etPrueba"
+            android:textColor="@color/LetraBlanco"
             />
     </LinearLayout>
 
@@ -100,9 +101,9 @@
             android:id="@+id/tvPrecioTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Precio Total: 0.00€"
+            android:text="@string/PrecioTotalConPrecio"
             android:textSize="30dp"
-            android:textColor="@color/black"
+            android:textColor="@color/LetraBlanco"
             android:gravity="center"
             />
     </LinearLayout>
@@ -118,10 +119,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Borrar \nPedido"
+            android:text="@string/BorrarPedido"
             android:layout_marginHorizontal="10dp"
             android:id="@+id/btnCancelarPedido"
             android:background="@drawable/redondear_botones"
+            android:theme="@style/BotonNoMayusculas"
             android:backgroundTint="@color/rojoClarito"
             />
         <Button
@@ -130,8 +132,9 @@
             android:layout_weight="1"
             android:background="@drawable/redondear_botones"
             android:backgroundTint="@color/BotonAccederOscuro"
-            android:text="Guardar \nModificacion"
+            android:text="@string/GuardarModificacion"
             android:layout_marginHorizontal="10dp"
+            android:theme="@style/BotonNoMayusculas"
             android:id="@+id/btnConfirmarPedido"
             />
     </LinearLayout>

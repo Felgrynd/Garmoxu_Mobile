@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
+    android:background="@color/FondoOscuro"
     tools:context=".ui.gallery.GalleryFragment" >
 
     <LinearLayout
@@ -21,6 +22,8 @@
             android:layout_height="100dp"
             android:text="Buscar Por Id"
             android:background="@drawable/custom_button_a"
+            android:backgroundTint="@color/BotonAplicarFiltros"
+            android:textColor="@color/LetraBlanco"
             />
 
     </LinearLayout>
@@ -37,6 +40,8 @@
             android:layout_height="100dp"
             android:text="Buscar Por Categorias"
             android:background="@drawable/custom_button_a"
+            android:backgroundTint="@color/BotonAplicarFiltros"
+            android:textColor="@color/LetraBlanco"
             />
 
     </LinearLayout>
@@ -53,6 +58,8 @@
             android:layout_height="100dp"
             android:text="Ver Toda la Lista de Platos"
             android:background="@drawable/custom_button_a"
+            android:backgroundTint="@color/BotonAplicarFiltros"
+            android:textColor="@color/LetraBlanco"
             />
 
     </LinearLayout>

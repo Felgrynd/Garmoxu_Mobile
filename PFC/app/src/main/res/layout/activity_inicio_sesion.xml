@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=" User"
+            android:textColor="@color/LetraBlanco"
             android:layout_marginHorizontal="25dp"
             android:layout_marginBottom="25dp"
             />
@@ -52,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:text="1234abcd"
+                android:textColor="@color/LetraBlanco"
                 android:id="@+id/etPass"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,7 +63,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/redondear_botones"
             android:backgroundTint="@color/BotonAccederOscuro"
-            android:text="Inicio sesión"
+            android:theme="@style/BotonNoMayusculas"
+            android:text="@string/InicioSesion"
+            android:textSize="20dp"
             />
     </LinearLayout>
 
@@ -75,7 +79,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Esta aplicacion esta orientado al uso exclusivo para los empleados al servicio del cliente del Local"
+            android:textColor="@color/black"
+            android:text="@string/TextoUsoAPPInicioSesion"
             />
     </LinearLayout>
 

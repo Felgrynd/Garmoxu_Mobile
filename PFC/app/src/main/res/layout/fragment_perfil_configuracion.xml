@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     android:background="@color/FondoOscuro"
@@ -24,7 +25,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#000" />
+            android:background="@color/black" />
     </LinearLayout>
 
     <LinearLayout
@@ -42,41 +43,41 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         >
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del usuario:"
+            android:textColorHint="@color/LetraBlanco"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColorHint="@color/LetraBlanco"
+                android:textColor="@color/LetraBlanco"
+                android:id="@+id/etPass"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/rojoOscuro"
-            android:textSize="20dp"
-            android:text="Nombre del Usuario:"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/etNombreUsuario"
-            android:enabled="false"
-            android:textColor="@color/LetraGrisClarito"
-            />
-        <TextView
-            android:textColor="@color/rojoOscuro"
+            android:textColor="@color/LetraBlanco"
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre y Apellidos del Empleado:"/>
-        <EditText
-            android:textColor="@color/LetraGrisClarito"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/etNombreEmpleado"
-            />
+            android:text="Nombre y Apellidos del Empleado:"
+            android:layout_marginTop="40dp"/>
+
         <Switch
-            android:textColor="@color/rojoOscuro"
+            android:textColor="@color/LetraBlanco"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Respablecer Contraseña"/>
+            android:text="Restablecer Contraseña"
+            android:layout_marginTop="40dp"/>
 
     </LinearLayout>
 
@@ -96,7 +97,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#000"/>
+            android:background="@color/black"/>
     </LinearLayout>
 
     <LinearLayout
@@ -113,7 +114,7 @@
             android:gravity="center|left"
             >
             <TextView
-                android:textColor="@color/rojoOscuro"
+                android:textColor="@color/LetraBlanco"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Claro"
-                    android:textColor="@color/LetraGrisClarito"/>
+                    android:textColor="@color/LetraBlanco"/>
 
                 <RadioButton
                     android:id="@+id/rbOscuro"
@@ -137,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Oscuro"
-                    android:textColor="@color/LetraGrisClarito"/>
+                    android:textColor="@color/LetraBlanco"/>
 
             </RadioGroup>
         </LinearLayout>
@@ -149,7 +150,7 @@
             android:gravity="center|left"
             >
             <TextView
-                android:textColor="@color/rojoOscuro"
+                android:textColor="@color/LetraBlanco"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -173,23 +174,22 @@
         android:orientation="horizontal"
         >
         <Button
-            android:id="@+id/btnCerrarSesion"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/CerrarSesion"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/redondear_botones"
-            android:backgroundTint="@color/rojoClarito" />
-
-        <Button
             android:id="@+id/btnAplicarCambios"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/AplicarCambios"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/redondear_botones"
             android:backgroundTint="@color/BotonAccederOscuro"/>
 
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/CerrarSesion"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/redondear_botones"
+            android:backgroundTint="@color/rojoClarito" />
+    </LinearLayout>
 </LinearLayout>

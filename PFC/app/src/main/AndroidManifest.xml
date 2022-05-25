@@ -14,33 +14,39 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".VerCategorias"
-            android:exported="false" />
-        <activity
-            android:name=".CustomAdapter"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/Categorias"/>
+
         <activity
             android:name=".DetallesPedidos"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/DetallesPedido"/>
+
         <activity
             android:name=".CambiarPasswd"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".PlatosDeCategorias"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/PlatosCategoria"/>
         <activity
             android:name=".VerPlatos"
-            android:exported="false" />
-        <activity
-            android:name=".MenuMain"
             android:exported="false"
-            android:label="@string/title_activity_menu_main"
-            android:theme="@style/Theme.PFC.NoActionBar" />
+            android:label="@string/VerPlatos"/>
+
         <activity
             android:name=".InicioSesion"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:label="@string/Garmoxu"/>
+
+        <activity
+            android:name=".MenuMain"
+            android:exported="true"
+            android:label="Garmoxu"
+            android:theme="@style/Theme.PFC.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
