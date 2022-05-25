@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:id="@+id/ivPedidoPlado"
         android:layout_weight="1"
-        android:background="@color/teal_200"
+        android:src="@drawable/noimage"
         />
 
     <LinearLayout
@@ -45,6 +45,7 @@
                 android:text="x"
                 android:textSize="10dp"
                 android:background="@drawable/custom_button_a"
+                android:backgroundTint="@color/rojoOscuro"
                 />
 
         </LinearLayout>
@@ -57,10 +58,11 @@
             >
             <Button
                 android:background="@drawable/custom_button_a"
+                android:backgroundTint="@color/BotonAccederOscuro"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
-                android:id="@+id/btnLess"
-                android:text="-"
+                android:id="@+id/btnPlus"
+                android:text="+"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -71,10 +73,11 @@
                 android:text="0"/>
             <Button
                 android:background="@drawable/custom_button_a"
+                android:backgroundTint="@color/rojoClarito"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
-                android:id="@+id/btnPlus"
-                android:text="+"
+                android:id="@+id/btnLess"
+                android:text="-"
                 />
         </LinearLayout>
 

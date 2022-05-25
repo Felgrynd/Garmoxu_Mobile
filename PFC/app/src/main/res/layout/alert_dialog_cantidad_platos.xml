@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvTitulo"
             android:padding="10dp"
-            android:textColor="@color/black"
-            android:text="Titulo"
+            android:textColor="@color/white"
+            android:text="@string/Titulo"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
             />
         <TextView
             android:gravity="center"
-            android:text="Texto"
+            android:text="@string/Texto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvMensaje"
@@ -44,7 +44,7 @@
         <Button
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/btnMenos"
+            android:id="@+id/btnMas"
             android:layout_marginStart="100dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="40dp"
@@ -54,8 +54,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMensaje"
             android:textSize="14sp"
-            android:textColor="@color/black"
-            android:text="-"
+            android:textColor="@color/white"
+            android:text="+"
             />
         <TextView
             android:gravity="center"
@@ -75,7 +75,7 @@
         <Button
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/btnMas"
+            android:id="@+id/btnMenos"
             android:layout_marginEnd="100dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="40dp"
@@ -85,8 +85,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMensaje"
             android:textSize="14sp"
-            android:textColor="@color/black"
-            android:text="+"
+            android:textColor="@color/white"
+            android:text="-"
             />
 
 
@@ -95,33 +95,33 @@
     <Button
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:id="@+id/btnCancelar"
+        android:id="@+id/btnConfirmar"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/alert_dialog_cantidad_plato_background"
         app:layout_constraintBottom_toBottomOf="@+id/clAlertDialogCantidad"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnConfirmar"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
         app:layout_constraintTop_toBottomOf="@+id/clAlertDialogCantidad"
         android:textSize="14sp"
-        android:textColor="@color/black"
-        android:text="Cancelar"
+        android:textColor="@color/white"
+        android:text="@string/Confirmar"
         />
 
     <Button
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:id="@+id/btnConfirmar"
+        android:id="@+id/btnCancelar"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/alert_dialog_cantidad_plato_background"
         app:layout_constraintBottom_toBottomOf="@+id/clAlertDialogCantidad"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCancelar"
+        app:layout_constraintStart_toEndOf="@+id/btnConfirmar"
         app:layout_constraintTop_toBottomOf="@+id/clAlertDialogCantidad"
         android:textSize="14sp"
-        android:textColor="@color/black"
-        android:text="Confirmar"
+        android:textColor="@color/white"
+        android:text="@string/Cancelar"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

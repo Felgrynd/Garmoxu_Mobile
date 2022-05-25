@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="#FDF2D1"
+    android:background="@color/FondoOscuro"
     tools:context=".CambiarPasswd">
 
     <TextView
@@ -16,7 +16,7 @@
         android:text="Cambiar Contraseña"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/LetraBlanco"
         android:gravity="center"
         />
 
@@ -40,7 +40,7 @@
         android:layout_weight="4"
         android:text="Su nueva contraseña debe de ser diferentes a las anteriores que han sido utilizados."
         android:gravity="center|top"
-        android:textColor="@color/black"
+        android:textColor="@color/LetraGrisClarito"
         />
 
     <LinearLayout
@@ -55,6 +55,8 @@
             app:passwordToggleEnabled="true"
             android:hint="Contraseña Actual"
             android:layout_marginBottom="20dp"
+            android:textColorHint="@color/LetraBlanco"
+            android:textColor="@color/LetraBlanco"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -69,12 +71,15 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             android:hint="Nueva Contraseña"
+            android:textColorHint="@color/LetraBlanco"
+            android:textColor="@color/LetraBlanco"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:id="@+id/etNuevoPasswd"
+
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,6 +88,8 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             android:hint="Repetir Contraseña"
+            android:textColorHint="@color/LetraBlanco"
+            android:textColor="@color/LetraBlanco"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -108,6 +115,8 @@
             android:layout_marginHorizontal="20dp"
             android:id="@+id/btnCambiarPasswd"
             android:background="@drawable/custom_button_a"
+            android:theme="@style/BotonNoMayusculas"
+            android:backgroundTint="@color/BotonAccederOscuro"
             />
 
     </LinearLayout>

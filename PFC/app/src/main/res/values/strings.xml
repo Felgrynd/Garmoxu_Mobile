@@ -8,15 +8,22 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home"></string>
+    <string name="menu_gallery"></string>
+    <string name="menu_slideshow"></string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+
     <!-- APARTADO DE APLICACIÓN, PALABRAS A TRADUCIR EN EL FUTURO -->
+    <string name="TextoUsoAPPInicioSesion">Esta aplicacion esta orientado al uso exclusivo para los empleados al servicio del cliente del Local</string>
+
     <string name="BuscarPedido">Buscar Pedido</string>
+    <string name="BuscarPlato">Buscar Plato</string>
+    <string name="BuscarCategoria">Buscar Categoria</string>
     <string name="MeterCodigoPlato">Codigo plato</string>
     <string name="MeterNombrePlato">Nombre plato</string>
     <string name="AplicarFiltros">Aplicar filtros</string>
@@ -24,6 +31,8 @@
     <string name="Cantidad">Cantidad:</string>
     <string name="Nombre">Nombre:</string>
     <string name="Usuario">Usuario</string>
+
+    <string name="IdPlato">IdPLato</string>
 
     <string name="Nombredelusuario">Nombre del usuario</string>
     <string name="Nombredelempleado">Nombre del empleado</string>
@@ -36,19 +45,39 @@
     <string name="CerrarSesion">Cerrar sesión</string>
     <string name="AplicarCambios">Aplicar cambios</string>
     <string name="NombreApellidosDelUsuario">Nombre y apellidos del usuario</string>
+    <string name="Categorias">Categorías</string>
+    <string name="DetallesPedido">Detalles pedido</string>
+    <string name="PlatosCategoria">Platos categorizados</string>
+    <string name="VerPlatos">Platos</string>
+    <string name="BorrarPedido">Borrar pedido</string>
+    <string name="GuardarModificacion">Guardar modificacion</string>
+    <string name="Configuracion">Configuracion</string>
+    <string name="InicioSesion">Inicio Sesión</string>
+
 
     <string name="CodigoPlato">Codigo plato:</string>
     <string name="PrecioTotal">Precio total:</string>
+    <string name="PrecioTotalConPrecio">Precio total: 0.00€</string>
+    <string name="PrecioASecas">Precio:</string>
     <string name="NombrePlato">Nombre del plato:</string>
     <string name="PlatoComida">Plato de comida</string>
     <string name="ListaAlergenos">Lista de alérgenos:</string>
     <string name="AlergenosPlato">Alérgenos en el plato</string>
     <string name="Descripcion">Descripción:</string>
-    <string name="DescripcionPlato">Descripción del plato</string>
+    <string name="DescripcionPlato">Descripción del plato:</string>
+    <string name="NumeroMesa">Numero de la mesa</string>
+    <string name="EstadoPedido">Estado del pedido:</string>
 
     <string name="TusMesas">Tus Mesas</string>
     <string name="ConsultarPlatos">Consultar platos</string>
     <string name="MesasCompañeros">Mesas de tus compañeros</string>
     <string name="Ajustes">Ajustes</string>
+    <string name="Garmoxu">Garmoxu</string>
+
+    <string name="Confirmar">Confirmar</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="Titulo">Titulo</string>
+    <string name="Texto">Texto</string>
+
 
 </resources>

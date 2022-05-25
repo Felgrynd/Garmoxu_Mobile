@@ -18,10 +18,20 @@
 
     <!-- COLORES PARA TEMA OSCURO -->
     <color name="FondoOscuro">#35363A</color>
-    <color name="FondoGrisSecundario">#FF4A4747</color>
+    <color name="FondoGrisSecundario">#504D4D</color>
     <color name="LetraBlanco">#FFFFFFFF</color>
     <color name="LetraGrisClarito">#FF8E8A8A</color>
     <color name="BotonAccederOscuro">#2E8B57</color>
     <color name="BotonAplicarFiltros">#FF1A39EA</color>
+
     <!-- COLORES PARA TEMA CLARO -->
+
+    <color name="AzulAgua">#00bfff</color>
+    <color name="BlancoAzulado">#C3F4F0</color>
+    <color name="AzulCielo">#03DAC5</color>
+    <color name="AzulCieloVeraniego">#8FE3FF</color>
+
+    <color name="VerdeAzuladoClaro">#4DB6AC</color>
+    <color name="VerdeAzuladoMedioOscuro">#009688</color>
+    <color name="VerdeAzuladoMuyOscuro">#00695C</color>
 </resources>
