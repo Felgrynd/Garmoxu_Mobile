@@ -72,6 +72,7 @@ public class HomeFragment extends Fragment {
                         params.weight = 1;
                         params.leftMargin = 20;
                         params.rightMargin = 20;
+                        params.bottomMargin = 40;
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
@@ -88,6 +89,7 @@ public class HomeFragment extends Fragment {
                                 btnDynamic.setTag(jsonData.getJSONObject(i).getString("IdPedido"));
                                 //btnDynamic.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,200));
                                 btnDynamic.setLayoutParams(params);
+                                btnDynamic.setBackgroundResource(R.drawable.custom_button_a);
                                 btnDynamic.setOnClickListener(dynamicOnClick());
 
                                 llDynamic.addView(btnDynamic);

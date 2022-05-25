@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -25,8 +26,8 @@ public class MenuMain extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuMainBinding binding;
 
-    private ImageView ivPuesto;
     private TextView tvNombre, tvUser;
+    private ShapeableImageView ivPuesto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

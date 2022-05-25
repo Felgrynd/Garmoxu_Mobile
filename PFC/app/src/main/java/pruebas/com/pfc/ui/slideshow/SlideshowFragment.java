@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -71,6 +72,7 @@ public class SlideshowFragment extends Fragment {
                         params.weight = 1;
                         params.leftMargin = 20;
                         params.rightMargin = 20;
+                        params.bottomMargin = 40;
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
@@ -86,6 +88,7 @@ public class SlideshowFragment extends Fragment {
                                 btnDynamic.setTag(jsonData.getJSONObject(i).getString("IdPedido"));
                                 //btnDynamic.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,200));
                                 btnDynamic.setLayoutParams(params);
+                                btnDynamic.setBackgroundResource(R.drawable.custom_button_a);
                                 btnDynamic.setOnClickListener(dynamicOnClick());
 
                                 llDynamic.addView(btnDynamic);
@@ -114,7 +117,7 @@ public class SlideshowFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent().setClass(getActivity(), DetallesPedidos.class);
                 intent.putExtra("idTag", view.getTag().toString());
-                intent.putExtra("idMesa", ""+view.getId());
+                intent.putExtra("idMesa", ((TextView) view).getText().toString());
                 intent.putExtra("NombreUsuario", getActivity().getIntent().getStringExtra("NombreUsuario"));
                 intent.putExtra("btnDer", "Guardar \nModificacion");
                 intent.putExtra("btnIzq", "Borrar \nPedido");

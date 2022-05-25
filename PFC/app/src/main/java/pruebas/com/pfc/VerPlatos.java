@@ -2,6 +2,7 @@ package pruebas.com.pfc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -59,6 +60,8 @@ public class VerPlatos extends AppCompatActivity {
                                 if(jsonData.getJSONObject(i).getString("Disponibilidad").equals("0")) llDiponobilidad.setBackgroundColor(Color.RED);
                                 tvIdPedido.setText(jsonData.getJSONObject(i).getString("IdPlatoComida"));
                                 tvNombre.setText(jsonData.getJSONObject(i).getString("Nombre"));
+                                if((Bitmap)getIntent().getParcelableExtra("ImagenPlato") == null) ivImagenPlato.setImageResource(R.drawable.noimage);
+                                else ivImagenPlato.setImageBitmap((Bitmap)getIntent().getParcelableExtra("ImagenPlato"));
                                 tvPrecio.setText(jsonData.getJSONObject(i).getString("PrecioConIVA"));
                                 tvDescripcion.setText(jsonData.getJSONObject(i).getString("Descripcion"));
                                 generarEtiquetasAlergenos(jsonData.getJSONObject(i).getString("Alergenos"));

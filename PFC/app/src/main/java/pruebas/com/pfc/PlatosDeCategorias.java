@@ -1,15 +1,23 @@
 package pruebas.com.pfc;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,11 +32,15 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Base64;
+
 public class PlatosDeCategorias extends AppCompatActivity {
 
     private EditText etBuscarPlatosDeCategoria;
     private LinearLayout llPlatosDeCategorias, llDynamic;
-    private Button btnDynamic;
+    private ImageButton ibtnDynamic;
+    private CardView cvDynamic;
+    private TextView tvDynamic;
 
     private RequestQueue requestQueue;
     private String urlDomain;
@@ -59,12 +71,16 @@ public class PlatosDeCategorias extends AppCompatActivity {
                 urlDomain,
                 null,
                 new Response.Listener<JSONObject>(){
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onResponse(JSONObject response){
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(200, 500);
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, 500);
                         params.weight = 1;
-                        params.leftMargin = 5;
-                        params.rightMargin = 5;
+                        params.topMargin = 20;
+                        params.leftMargin = 20;
+                        params.rightMargin = 20;
+                        params.bottomMargin = 20;
+                        Bitmap bitmap = null;
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
@@ -72,61 +88,84 @@ public class PlatosDeCategorias extends AppCompatActivity {
                                 if(i % 2 == 0){
                                     llDynamic = new LinearLayout(PlatosDeCategorias.this);
                                     llDynamic.setOrientation(LinearLayout.HORIZONTAL);
-                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 500));
+                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                                    llDynamic.setGravity(Gravity.CENTER);
                                     llPlatosDeCategorias.addView(llDynamic);
                                 }
-                                btnDynamic = new Button(PlatosDeCategorias.this);
-                                btnDynamic.setId(i);
-                                btnDynamic.setText(jsonData.getJSONObject(i).getString("Nombre"));
-                                btnDynamic.setTag(jsonData.getJSONObject(i).getString("IdPlatoComida"));
-                                btnDynamic.setLayoutParams(params);
-                                if(getIntent().getExtras().getBoolean("esConsulta"))
-                                    btnDynamic.setOnClickListener(dynamicOnClickConsultarPlato(jsonData.getJSONObject(i).getString("IdPlatoComida")));
-                                else
-                                    btnDynamic.setOnClickListener(dynamicOnClickAddPlato(jsonData.getJSONObject(i).getString("IdPlatoComida"), jsonData.getJSONObject(i).getString("PrecioConIVA"), jsonData.getJSONObject(i).getString("Nombre")));
+                                cvDynamic = new CardView(PlatosDeCategorias.this);
+                                ibtnDynamic = new ImageButton(PlatosDeCategorias.this);
+                                tvDynamic = new TextView(PlatosDeCategorias.this);
 
-                                llDynamic.addView(btnDynamic);
+                                //btnDynamic.setId(i);
+                                tvDynamic.setText(jsonData.getJSONObject(i).getString("Nombre"));
+                                tvDynamic.setTag(jsonData.getJSONObject(i).getString("IdPlatoComida"));
+                                tvDynamic.setGravity(Gravity.CENTER);
+                                tvDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+
+                                ibtnDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                                if(jsonData.getJSONObject(i).getString("ImagenPlato").equals(""))
+                                    ibtnDynamic.setImageResource(R.drawable.noimage);
+                                else {
+                                    byte[] byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenCategoria"));
+                                    bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                                    ibtnDynamic.setImageBitmap(bitmap);
+                                }
+                                ibtnDynamic.setScaleType(ImageView.ScaleType.CENTER);
+
+                                cvDynamic.setRadius(20);
+                                cvDynamic.setLayoutParams(params);
+                                cvDynamic.addView(ibtnDynamic);
+                                cvDynamic.addView(tvDynamic);
+                                tvDynamic.bringToFront();
+
+                                //btnDynamic.setBackgroundResource(R.drawable.custom_button_a);
+                                if(getIntent().getExtras().getBoolean("esConsulta"))
+                                    tvDynamic.setOnClickListener(dynamicOnClickConsultarPlato(jsonData.getJSONObject(i).getString("IdPlatoComida"),bitmap));
+                                else
+                                    tvDynamic.setOnClickListener(dynamicOnClickAddPlato(jsonData.getJSONObject(i).getString("IdPlatoComida"), jsonData.getJSONObject(i).getString("PrecioConIVA"), jsonData.getJSONObject(i).getString("Nombre"), bitmap));
+
+                                llDynamic.addView(cvDynamic);
                             }
                         } catch (Exception e) {
                             Toast.makeText(PlatosDeCategorias.this, "onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
-                            etBuscarPlatosDeCategoria.setText(etBuscarPlatosDeCategoria.getText()+e.toString());
+                            etBuscarPlatosDeCategoria.setText("onResponse: \n"+etBuscarPlatosDeCategoria.getText()+e.toString());
                         }
                     }
                 }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
                 Toast.makeText(PlatosDeCategorias.this, "onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                etBuscarPlatosDeCategoria.setText(etBuscarPlatosDeCategoria.getText()+error.toString());
+                etBuscarPlatosDeCategoria.setText("onErrorResponse: \n"+etBuscarPlatosDeCategoria.getText()+error.toString());
             }
         }
         );
         requestQueue.add(jsonObjectRequest);
     }
 
-    private View.OnClickListener dynamicOnClickConsultarPlato(String idPlato){
+    private View.OnClickListener dynamicOnClickConsultarPlato(String idPlato, Bitmap bitmap){
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(PlatosDeCategorias.this, ""+idPlato, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent().setClass(PlatosDeCategorias.this, VerPlatos.class);
                 intent.putExtra("idPlato", idPlato);
+                intent.putExtra("ImagenPlato", bitmap);
                 startActivity(intent);
             }
         };
     }
 
-    private View.OnClickListener dynamicOnClickAddPlato(String idPlato, String precio, String nombre){
+    private View.OnClickListener dynamicOnClickAddPlato(String idPlato, String precio, String nombre, Bitmap imagenPlato){
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //DetallesPedidos.arrayList.add(new Plato(idPlato, precio, ));
-                showAlertDialogCantidad(idPlato, precio, nombre);
-
+                showAlertDialogCantidad(idPlato, precio, nombre, imagenPlato);
             }
         };
     }
 
-    private void showAlertDialogCantidad(String idPlato, String precio, String nombre){
+    private void showAlertDialogCantidad(String idPlato, String precio, String nombre, Bitmap imagenPlato){
         AlertDialog.Builder builder = new AlertDialog.Builder(PlatosDeCategorias.this); //R.style.AlertDialogTheme
         View view = LayoutInflater.from(PlatosDeCategorias.this).inflate(R.layout.alert_dialog_cantidad_platos, findViewById(R.id.clAlertDialogCantidadContainer));
         builder.setView(view);
@@ -163,7 +202,7 @@ public class PlatosDeCategorias extends AppCompatActivity {
                         }
                     }
                     if(contiene == false){
-                        DetallesPedidos.listaDePlatosDelPedido.add(new Plato(idPlato, nombre, Integer.parseInt(tvCantidad.getText().toString()), Double.parseDouble(precio)));
+                        DetallesPedidos.listaDePlatosDelPedido.add(new Plato(idPlato, nombre, Integer.parseInt(tvCantidad.getText().toString()), Double.parseDouble(precio), imagenPlato));
                         Toast.makeText(PlatosDeCategorias.this, "Se ha añadido correctamente el siguiente plato: " + nombre + " (Cantidad: " + tvCantidad.getText() + ")", Toast.LENGTH_SHORT).show();
                     }
                     DetallesPedidos.customAdapter.notifyDataSetChanged();

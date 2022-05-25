@@ -1,5 +1,7 @@
 package pruebas.com.pfc;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.Switch;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +24,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class PerfilConfiguracion extends Fragment {
+
+    private Spinner spnIdiomas;
+    private ImageView ivPerfil;
+    private EditText etNombreUsuario, etNombreEmpleado;
+    private Switch swReset;
+    private RadioButton rbClaro, rbOscuro;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +75,32 @@ public class PerfilConfiguracion extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil_configuracion, container, false);
+        //return inflater.inflate(R.layout.fragment_perfil_configuracion, container, false);
+        View v = inflater.inflate(R.layout.fragment_perfil_configuracion, container, false);
+
+        spnIdiomas = v.findViewById(R.id.spnIdiomas);
+        ivPerfil = v.findViewById(R.id.ivPerfil);
+        etNombreUsuario = v.findViewById(R.id.etNombreUsuario);
+        etNombreEmpleado = v.findViewById(R.id.etNombreEmpleado);
+        //swReset = v.findViewById(R.id.swReset);
+        rbClaro = v.findViewById(R.id.rbClaro);
+        rbOscuro = v.findViewById(R.id.rbOscuro);
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(getActivity().getIntent().getByteArrayExtra("ImagenUsuario"), 0, getActivity().getIntent().getByteArrayExtra("ImagenUsuario").length);
+        ivPerfil.setImageBitmap(bitmap);
+        etNombreUsuario.setText(getActivity().getIntent().getStringExtra("NombreUsuario"));
+        etNombreEmpleado.setText(getActivity().getIntent().getStringExtra("NombreEmpleado"));
+        rbOscuro.setChecked(true);
+
+        generarIdiomasSpinner();
+        //construir un metodo para detectar el idioma actual?
+
+        return v;
+    }
+
+    private void generarIdiomasSpinner(){
+        final String[] idiomas = {"Español", "Ingles"};
+        ArrayAdapter<String> arrayAdapterIdiomas = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, idiomas);
+        spnIdiomas.setAdapter(arrayAdapterIdiomas);
     }
 }
