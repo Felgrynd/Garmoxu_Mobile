@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -170,7 +171,7 @@ public class DetallesPedidos extends AppCompatActivity {
                             }
                         } catch (Exception e) {
                             //etPrueba.setText(etPrueba.getText() + "\nException2: "+e.getMessage().toString());
-                            Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener(){
@@ -191,7 +192,7 @@ public class DetallesPedidos extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(DetallesPedidos.this, "setEstadoMesa correctamente", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(DetallesPedidos.this, "setEstadoMesa correctamente", Toast.LENGTH_SHORT).show();
                         //finish();
                     }
                 },
@@ -237,14 +238,15 @@ public class DetallesPedidos extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(DetallesPedidos.this, "borrarPedidoExistente: Se ha borrado correctamente", Toast.LENGTH_SHORT).show();
-                        //finish();
+                        //Toast.makeText(DetallesPedidos.this, "borrarPedidoExistente: Se ha borrado correctamente", Toast.LENGTH_SHORT).show();
+                        setResult(10);
+                        finish();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DetallesPedidos.this, "borrarPedidoExistente onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(DetallesPedidos.this, "borrarPedidoExistente onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
                         //etPrueba.setText(error.getMessage().toString());
                     }
                 }
@@ -277,7 +279,7 @@ public class DetallesPedidos extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DetallesPedidos.this, "modificarPedido onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(DetallesPedidos.this, "modificarPedido onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
                         //etPrueba.setText(error.getMessage().toString());
                     }
                 }
@@ -329,7 +331,20 @@ public class DetallesPedidos extends AppCompatActivity {
                     }
                     addAndDeletePlatosPedidos(false);
                     setResult(10);
-                    finish();
+
+                    ProgressBarLoading progressBarLoading = new ProgressBarLoading(DetallesPedidos.this);
+                    progressBarLoading.startLoadingDialog();
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBarLoading.dismissDialog();
+                            finish();
+                            //alert.dismiss();
+                        }
+                    }, 1500);
+
                 }else
                     Toast.makeText(DetallesPedidos.this, "No hay platos asignados a esta Mesa o No hay mesa asignada al pedido", Toast.LENGTH_SHORT).show();
             }
@@ -350,7 +365,7 @@ public class DetallesPedidos extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Toast.makeText(DetallesPedidos.this, error.toString(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DetallesPedidos.this, "Error en el metodo addAndDeletePlatosPedidos()", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(DetallesPedidos.this, "Error en el metodo addAndDeletePlatosPedidos()", Toast.LENGTH_SHORT).show();
                     }
                 }
         ){
@@ -402,14 +417,14 @@ public class DetallesPedidos extends AppCompatActivity {
                             }
                             //spIdMesa.setAdapter(arrayAdapterMesasDisponibles);
                         } catch (Exception e) {
-                            Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
                 //Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(DetallesPedidos.this, "getMesasDisponibles: Actualemte no hay mesas disponibles", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetallesPedidos.this, "Actualemte no hay mesas disponibles", Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -428,13 +443,13 @@ public class DetallesPedidos extends AppCompatActivity {
                             JSONArray jsonData = response.getJSONArray("data");
                             spIdMesa.setTag(jsonData.getJSONObject(0).getString("IdPedidoMax"));
                         } catch (Exception e) {
-                            Toast.makeText(DetallesPedidos.this, "setIdPedidoMax - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(DetallesPedidos.this, "setIdPedidoMax - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
-                Toast.makeText(DetallesPedidos.this, "setIdPedidoMax - onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DetallesPedidos.this, "setIdPedidoMax - onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -471,7 +486,7 @@ public class DetallesPedidos extends AppCompatActivity {
                                 //Toast.makeText(DetallesPedidos.this, ""+getDoubleTwoDecimalFormat(jsonData.getJSONObject(i).getString("Precio")), Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
-                            Toast.makeText(DetallesPedidos.this, "generarPlatosDelPedido onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(DetallesPedidos.this, "generarPlatosDelPedido onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                         customAdapter.notifyDataSetChanged();
                         calcularTotalPedido();
@@ -480,7 +495,7 @@ public class DetallesPedidos extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error){
                 //Toast.makeText(DetallesPedidos.this, "onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(DetallesPedidos.this, "No hay platos asginados a este pedido", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DetallesPedidos.this, "No hay platos asginados a este pedido", Toast.LENGTH_SHORT).show();
             }
         }
         );
