@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    android:background="@color/FondoOscuro"
+    android:background="@color/FondoMain1"
     tools:context=".ui.gallery.GalleryFragment" >
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_height="100dp"
             android:text="Buscar Por Id"
             android:background="@drawable/custom_button_a"
-            android:backgroundTint="@color/BotonAplicarFiltros"
+            android:backgroundTint="@color/ItemPedido"
             android:textColor="@color/LetraBlanco"
             />
 
@@ -40,9 +40,38 @@
             android:layout_height="100dp"
             android:text="Buscar Por Categorias"
             android:background="@drawable/custom_button_a"
-            android:backgroundTint="@color/BotonAplicarFiltros"
+            android:backgroundTint="@color/ItemPedido"
             android:textColor="@color/LetraBlanco"
             />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til"
+            android:textColorHint="@color/TextoHint1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Buscar Plato por Numero ID"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etBuscarIdPlato"
+                android:textColor="@color/TextoBlanco1"
+                android:backgroundTint="@color/white"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnBuscarIdPlatoEt"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button_a"
+            android:backgroundTint="@color/BotonTrue1"
+            android:textColor="@color/LetraBlanco"
+            android:text="Buscar"/>
 
     </LinearLayout>
     <LinearLayout
@@ -58,7 +87,7 @@
             android:layout_height="100dp"
             android:text="Ver Toda la Lista de Platos"
             android:background="@drawable/custom_button_a"
-            android:backgroundTint="@color/BotonAplicarFiltros"
+            android:backgroundTint="@color/ItemPedido"
             android:textColor="@color/LetraBlanco"
             />
 

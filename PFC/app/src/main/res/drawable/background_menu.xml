@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/FondoMain1"/>
+        </shape>
+    </item>
+    <item android:gravity="center" android:height="250dp" android:width="250dp">
+        <bitmap android:src="@drawable/garmoxu_red"/>
+    </item>
+</layer-list>

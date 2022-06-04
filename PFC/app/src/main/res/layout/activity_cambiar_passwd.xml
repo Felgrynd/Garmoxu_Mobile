@@ -55,14 +55,16 @@
             app:passwordToggleEnabled="true"
             android:hint="Contraseña Actual"
             android:layout_marginBottom="20dp"
-            android:textColorHint="@color/LetraBlanco"
-            android:textColor="@color/LetraBlanco"
+            android:textColorHint="@color/TextoHint1"
+            app:passwordToggleTint="@color/PasswordEyes1"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:id="@+id/etActualPasswd"
+                android:textColor="@color/TextoBlanco1"
+                android:backgroundTint="@color/white"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,14 +73,16 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             android:hint="Nueva Contraseña"
-            android:textColorHint="@color/LetraBlanco"
-            android:textColor="@color/LetraBlanco"
+            android:textColorHint="@color/TextoHint1"
+            app:passwordToggleTint="@color/PasswordEyes1"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:id="@+id/etNuevoPasswd"
+                android:textColor="@color/TextoBlanco1"
+                android:backgroundTint="@color/white"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,14 +91,16 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
             android:hint="Repetir Contraseña"
-            android:textColorHint="@color/LetraBlanco"
-            android:textColor="@color/LetraBlanco"
+            android:textColorHint="@color/TextoHint1"
+            app:passwordToggleTint="@color/PasswordEyes1"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:id="@+id/etRepetirPasswd"
+                android:textColor="@color/TextoBlanco1"
+                android:backgroundTint="@color/white"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,6 +122,9 @@
             android:background="@drawable/custom_button_a"
             android:theme="@style/BotonNoMayusculas"
             android:backgroundTint="@color/BotonAccederOscuro"
+            android:textColor="@color/TextoBlanco1"
+            android:textStyle="bold"
+            android:textSize="20dp"
             />
 
     </LinearLayout>

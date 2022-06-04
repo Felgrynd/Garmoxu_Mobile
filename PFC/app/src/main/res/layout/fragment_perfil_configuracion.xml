@@ -20,24 +20,30 @@
             android:layout_height="wrap_content"
             android:text="@string/Usuario"
             android:textSize="30dp"
-            android:textColor="@color/LetraBlanco"/>
+            android:textColor="@color/TituloBlanco1"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/black" />
+            android:background="@color/white" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
+        android:gravity="center|top"
         android:orientation="horizontal"
         >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivPerfil"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
+            android:layout_height="210dp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:scaleType="centerCrop"
+            android:src="@drawable/noimage"
+            app:shapeAppearanceOverlay="@style/rardiusImage2"
             />
     </LinearLayout>
 
@@ -46,22 +52,21 @@
         android:layout_height="wrap_content"
         android:gravity=""
         android:orientation="vertical"
-        android:layout_marginBottom="20dp"
         >
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Usuario:"
-            android:textColorHint="@color/LetraBlanco"
+            android:hint="Usuario"
+            android:textColorHint="@color/TextoHint1"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColorHint="@color/LetraBlanco"
-                android:textColor="@color/LetraBlanco"
+                android:textColor="@color/TextoBlanco1"
+                android:backgroundTint="@color/white"
                 android:id="@+id/etNombreUsuario"
+                android:enabled="false"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,29 +74,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre y Apellidos:"
-            android:textColorHint="@color/LetraBlanco"
+            android:textColorHint="@color/TextoHint1"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColorHint="@color/LetraBlanco"
-                android:textColor="@color/LetraBlanco"
+                android:textColor="@color/TextoBlanco1"
+                android:backgroundTint="@color/white"
                 android:id="@+id/etNombreEmpleado"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Switch
+            android:id="@+id/swReset"
+            android:layout_marginVertical="40dp"
             android:textColor="@color/LetraBlanco"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restablecer Contraseña"
+            android:text="Restablecer Contraseña   "
             android:layout_marginTop="10dp"/>
 
     </LinearLayout>
-
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -175,31 +181,34 @@
         </LinearLayout>
 
     </LinearLayout>
-
+-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="3"
         android:gravity="center"
         android:orientation="horizontal"
         >
-        <Button
-            android:id="@+id/btnAplicarCambios"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/AplicarCambios"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/redondear_botones"
-            android:backgroundTint="@color/BotonAccederOscuro"/>
-
-
         <Button
             android:id="@+id/btnCerrarSesion"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/CerrarSesion"
-            android:layout_marginLeft="20dp"
+            android:textColor="@color/TextoBlanco1"
+            android:layout_marginRight="20dp"
             android:background="@drawable/redondear_botones"
             android:backgroundTint="@color/rojoClarito" />
+
+        <Button
+            android:id="@+id/btnAplicarCambios"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/redondear_botones"
+            android:backgroundTint="@color/BotonAccederOscuro"
+            android:textColor="@color/TextoBlanco1"
+            android:text="@string/Guardar" />
+
     </LinearLayout>
+
 </LinearLayout>

@@ -21,10 +21,11 @@
             android:layout_weight="30"
             android:layout_height="wrap_content"
             android:text="@string/NumeroMesa"
-            android:textColor="@color/LetraBlanco"
+            android:textColor="@color/TextoHint1"
             android:textSize="20dp"
             />
         <Spinner
+            android:backgroundTint="@color/TextoBlanco1"
             android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_weight="20"
@@ -46,10 +47,11 @@
             android:layout_weight="30"
             android:layout_height="wrap_content"
             android:text="@string/EstadoPedido"
-            android:textColor="@color/LetraBlanco"
+            android:textColor="@color/TextoHint1"
             android:textSize="20dp"
             />
         <Spinner
+            android:backgroundTint="@color/TextoBlanco1"
             android:layout_width="0dp"
             android:layout_weight="27"
             android:layout_height="wrap_content"
@@ -80,13 +82,8 @@
             android:text="+"
             android:textSize="25dp"
             android:background="@drawable/custom_button_a"
-            android:textColor="@color/white"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/etPrueba"
-            android:textColor="@color/LetraBlanco"
+            android:textColor="@color/TextoBlanco1"
+            android:backgroundTint="@color/NuevoPlato"
             />
     </LinearLayout>
 
@@ -124,14 +121,16 @@
             android:id="@+id/btnCancelarPedido"
             android:background="@drawable/redondear_botones"
             android:theme="@style/BotonNoMayusculas"
-            android:backgroundTint="@color/rojoClarito"
+            android:backgroundTint="@color/BotonFalse1"
+            android:textColor="@color/TextoBlanco1"
             />
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/redondear_botones"
-            android:backgroundTint="@color/BotonAccederOscuro"
+            android:backgroundTint="@color/BotonTrue1"
+            android:textColor="@color/TextoBlanco1"
             android:text="@string/GuardarModificacion"
             android:layout_marginHorizontal="10dp"
             android:theme="@style/BotonNoMayusculas"

@@ -1,9 +1,12 @@
 package pruebas.com.pfc;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,16 +19,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Base64;
+
 public class VerPlatos extends AppCompatActivity {
 
     private LinearLayout llDiponobilidad;
-    private TextView tvIdPedido, tvNombre, tvPrecio, tvDescripcion;
-    private ImageView ivImagenPlato;
-
+    private TextView tvIdPedido, tvNombre, tvPrecio, tvDescripcion, tvAlergenos;
+    private ShapeableImageView ivImagenPlato;
 
     private RequestQueue requestQueue;
 
@@ -40,6 +45,7 @@ public class VerPlatos extends AppCompatActivity {
         tvPrecio = findViewById(R.id.tvPrecio);
         tvDescripcion = findViewById(R.id.tvDescripcion);
         ivImagenPlato = findViewById(R.id.ivImagenPlato);
+        tvAlergenos = findViewById(R.id.tvAlergenos);
 
         requestQueue = Volley.newRequestQueue(VerPlatos.this);
 
@@ -49,9 +55,11 @@ public class VerPlatos extends AppCompatActivity {
     private void generarDetallesPlatos() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
+                //MainActivity.DOMAIN + "categorias_platos.php?IdCategoria=0&EsOpc=3&IdPlatoComida=1",
                 MainActivity.DOMAIN + "categorias_platos.php?IdCategoria=0&EsOpc=3&IdPlatoComida="+getIntent().getStringExtra("idPlato"),
                 null,
                 new Response.Listener<JSONObject>() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
@@ -60,11 +68,14 @@ public class VerPlatos extends AppCompatActivity {
                                 if(jsonData.getJSONObject(i).getString("Disponibilidad").equals("0")) llDiponobilidad.setBackgroundColor(Color.RED);
                                 tvIdPedido.setText(jsonData.getJSONObject(i).getString("IdPlatoComida"));
                                 tvNombre.setText(jsonData.getJSONObject(i).getString("Nombre"));
-                                if((Bitmap)getIntent().getParcelableExtra("ImagenPlato") == null) ivImagenPlato.setImageResource(R.drawable.noimage);
-                                else ivImagenPlato.setImageBitmap((Bitmap)getIntent().getParcelableExtra("ImagenPlato"));
+                                if(!jsonData.getJSONObject(i).getString("ImagenPlato").equals("")) {
+                                    byte[] byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenPlato"));
+                                    Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                                    ivImagenPlato.setImageBitmap(bitmap);
+                                }
                                 tvPrecio.setText(jsonData.getJSONObject(i).getString("PrecioConIVA"));
                                 tvDescripcion.setText(jsonData.getJSONObject(i).getString("Descripcion"));
-                                generarEtiquetasAlergenos(jsonData.getJSONObject(i).getString("Alergenos"));
+                                tvAlergenos.setText(jsonData.getJSONObject(i).getString("Alergenos"));
                             }
                         } catch (Exception e) {
                             Toast.makeText(VerPlatos.this, "onResponse: \n" + e.toString(), Toast.LENGTH_SHORT).show();
@@ -78,10 +89,6 @@ public class VerPlatos extends AppCompatActivity {
         }
         );
         requestQueue.add(jsonObjectRequest);
-    }
-
-    private void generarEtiquetasAlergenos(String alergenos){
-
     }
 
 }

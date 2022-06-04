@@ -10,15 +10,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,12 +35,13 @@ import java.util.Base64;
 
 public class VerCategorias extends AppCompatActivity {
 
-    private EditText etBuscarCategorias;
-    private LinearLayout llCategorias, llDynamic;
+    //private EditText etBuscarCategorias;
+    private LinearLayout llCategorias, llDynamicHorizontal;
     //private ImageButton ibtnDynamic;
     private CardView cvDynamic;
     private TextView tvDynamic;
     private ImageView ivDynamic;
+    private RelativeLayout rlDynamic;
 
     private RequestQueue requestQueue;
     //private boolean esConsulta;
@@ -53,7 +53,7 @@ public class VerCategorias extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_categorias);
 
-        etBuscarCategorias = findViewById(R.id.etBuscarCategoria);
+        //etBuscarCategorias = findViewById(R.id.etBuscarCategoria);
         llCategorias = findViewById(R.id.llCategorias);
         //esConsulta = getIntent().getExtras().getBoolean("esConsulta");
 
@@ -72,67 +72,81 @@ public class VerCategorias extends AppCompatActivity {
                     @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onResponse(JSONObject response){
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(200, 500);
-                        params.weight = 1;
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(450, 450);
+                        //params.weight = 1;
                         params.topMargin = 20;
                         params.leftMargin = 20;
                         params.rightMargin = 20;
                         params.bottomMargin = 20;
+
+                        Bitmap bitmap = null;
+                        byte[] byteArray = null;
+
+                        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        rlParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
 
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
                                 //Toast.makeText(getActivity(), jsonData.getJSONObject(i).getString("IdPedido")+jsonData.getJSONObject(i).getString("IdMesa"), Toast.LENGTH_SHORT).show();
                                 if(i % 2 == 0){
-                                    llDynamic = new LinearLayout(VerCategorias.this);
-                                    llDynamic.setOrientation(LinearLayout.HORIZONTAL);
-                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                                    llDynamic.setGravity(Gravity.CENTER);
-                                    llCategorias.addView(llDynamic);
+                                    llDynamicHorizontal = new LinearLayout(VerCategorias.this);
+                                    llDynamicHorizontal.setOrientation(LinearLayout.HORIZONTAL);
+                                    llDynamicHorizontal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                                    llDynamicHorizontal.setGravity(Gravity.CENTER);
+                                    llCategorias.addView(llDynamicHorizontal);
                                 }
                                 cvDynamic = new CardView(VerCategorias.this);
                                 ivDynamic = new ImageView(VerCategorias.this);
                                 tvDynamic = new TextView(VerCategorias.this);
+                                rlDynamic = new RelativeLayout(VerCategorias.this);
+
+                                rlDynamic.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
                                 //btnDynamic.setId(i);
                                 tvDynamic.setText(jsonData.getJSONObject(i).getString("Nombre"));
                                 tvDynamic.setTag(jsonData.getJSONObject(i).getString("IdCategoria"));
-                                tvDynamic.setGravity(Gravity.CENTER);
-                                tvDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                                //tvDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                                tvDynamic.setLayoutParams(rlParams);
+                                tvDynamic.setPadding(15,15,15,15);
                                 tvDynamic.setTextColor(Color.BLACK);
                                 tvDynamic.setTypeface(null, Typeface.BOLD);
                                 tvDynamic.setTextSize(24);
+                                tvDynamic.setBackgroundResource(R.drawable.text_view_background_a);
+                                tvDynamic.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-                                ivDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                                ivDynamic.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
                                 if(jsonData.getJSONObject(i).getString("ImagenCategoria").equals(""))
                                     ivDynamic.setImageResource(R.drawable.noimage);
                                 else {
-                                    byte[] byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenCategoria"));
-                                    Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                                    byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenCategoria"));
+                                    bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                                     ivDynamic.setImageBitmap(bitmap);
                                 }
-                                ivDynamic.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                ivDynamic.setScaleType(ImageView.ScaleType.FIT_XY);
 
                                 cvDynamic.setRadius(80);
                                 cvDynamic.setLayoutParams(params);
-                                cvDynamic.addView(ivDynamic);
-                                cvDynamic.addView(tvDynamic);
+
+                                rlDynamic.addView(ivDynamic);
+                                rlDynamic.addView(tvDynamic);
+                                cvDynamic.addView(rlDynamic);
                                 tvDynamic.bringToFront();
 
                                 tvDynamic.setOnClickListener(dynamicOnClick(jsonData.getJSONObject(i).getString("IdCategoria")));
 
-                                llDynamic.addView(cvDynamic);
+                                llDynamicHorizontal.addView(cvDynamic);
                             }
                         } catch (Exception e) {
                             Toast.makeText(VerCategorias.this, "onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
-                            etBuscarCategorias.setText(etBuscarCategorias.getText()+e.toString());
+                            //etBuscarCategorias.setText(etBuscarCategorias.getText()+e.toString());
                         }
                     }
                 }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
                 Toast.makeText(VerCategorias.this, "onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                etBuscarCategorias.setText(etBuscarCategorias.getText()+error.toString());
+                //etBuscarCategorias.setText(etBuscarCategorias.getText()+error.toString());
             }
         }
         );

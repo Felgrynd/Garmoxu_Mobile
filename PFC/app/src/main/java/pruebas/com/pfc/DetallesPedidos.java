@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,8 +46,6 @@ import java.util.Map;
 
 public class DetallesPedidos extends AppCompatActivity {
 
-    private EditText etPrueba;
-
     private Button btnAddPlato, btnCancelarPedido, btnConfirmarPedido;
     private TextView tvPrecioTotal;
     private ListView lvPedidosPlatos;
@@ -70,7 +70,7 @@ public class DetallesPedidos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles_pedidos);
 
-        etPrueba = findViewById(R.id.etPrueba);
+        //etPrueba = findViewById(R.id.etPrueba);
 
         btnAddPlato = findViewById(R.id.btnAddPlato);
         btnCancelarPedido = findViewById(R.id.btnCancelarPedido);
@@ -96,6 +96,7 @@ public class DetallesPedidos extends AppCompatActivity {
         date = new Date();
         if(getIntent().getExtras().getBoolean("esNuevoPedido")) {
             setIdPedidoMax();
+            mesasDisponibles.add("");
         }else {
             generarPlatosDelPedido();
             mesasDisponibles.add(getIntent().getStringExtra("idMesa"));
@@ -121,6 +122,22 @@ public class DetallesPedidos extends AppCompatActivity {
         btnConfirmarPedido.setOnClickListener(platosDelPedido(getIntent().getStringExtra("btnDer")));
         btnCancelarPedido.setOnClickListener(btnLeft(getIntent().getStringExtra("btnIzq"), getIntent().getExtras().getBoolean("esNuevoPedido")));
 
+        spEstado.setOnItemSelectedListener(setListenerSpinnerTextWhite());
+        spIdMesa.setOnItemSelectedListener(setListenerSpinnerTextWhite());
+    }
+
+    private AdapterView.OnItemSelectedListener setListenerSpinnerTextWhite(){
+        return new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView)view).setTextColor(Color.WHITE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        };
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O) //DateTimeFormatter.ofPattern
@@ -137,11 +154,9 @@ public class DetallesPedidos extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O) //LocalDateTime.now()
     private void addSpinnerMesaDisponibles(){
         ldt = LocalDateTime.now();
-
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                MainActivity.DOMAIN + "reservas_mesas.php?FechaActual=" + formatDate.format(date).toString() + "&FechaPlus=" + "2022-05-27",//formatDate.format(LocalDateTime.from(date.toInstant()).plusDays(1)).toString(), //falta añadir cosas la fecha de hoy 'formatDate.format(date).toString()' y la fecha siguiente 'LocalDateTime.from(date.toInstant()).plusDays(1);'
+                MainActivity.DOMAIN + "reservas_mesas.php?FechaActual=" + formatDate.format(date).toString() + "&FechaPlus=" + "2022-05-30",//formatDate.format(LocalDateTime.from(date.toInstant()).plusDays(1)).toString(), //falta añadir cosas la fecha de hoy 'formatDate.format(date).toString()' y la fecha siguiente 'LocalDateTime.from(date.toInstant()).plusDays(1);'
                 null,
                 new Response.Listener<JSONObject>(){
                     @Override
@@ -153,18 +168,16 @@ public class DetallesPedidos extends AppCompatActivity {
                                         if (!mesaDisponibleRango2h(ldt, jsonData.getJSONObject(i).getString("Fecha"), jsonData.getJSONObject(i).getString("Hora")))
                                             mesasDisponibles.remove(jsonData.getJSONObject(i).getString("IdMesa"));
                             }
-                            //
                         } catch (Exception e) {
-                            etPrueba.setText(etPrueba.getText() + "\nException2: "+e.getMessage().toString());
+                            //etPrueba.setText(etPrueba.getText() + "\nException2: "+e.getMessage().toString());
                             Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener(){
             @Override
-            public void onErrorResponse(VolleyError error){
-                //Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                etPrueba.setText(etPrueba.getText() + "\nVolleyError: "+error.getMessage().toString());
-                Toast.makeText(DetallesPedidos.this, "Actualemte no hay mesas disponibles", Toast.LENGTH_SHORT).show();
+            public void onErrorResponse(VolleyError error){ //si salta aqui es porque no hay mesas reservadas durante el dia de hoy y el proximo
+                //etPrueba.setText(etPrueba.getText() + "\nVolleyError: "+error.getMessage().toString());
+                //Toast.makeText(DetallesPedidos.this, "addSpinnerMesaDisponibles: Actualmente no hay mesas disponibles", Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -174,19 +187,20 @@ public class DetallesPedidos extends AppCompatActivity {
     private void setEstadoMesa(String estado, String idMesa){
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
-                MainActivity.DOMAIN +"estado_mesas.php",
+                MainActivity.DOMAIN +"set_estado_mesas.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(DetallesPedidos.this, "Se ha cambiado la contraseña correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DetallesPedidos.this, "setEstadoMesa correctamente", Toast.LENGTH_SHORT).show();
                         //finish();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DetallesPedidos.this, error.toString(), Toast.LENGTH_SHORT).show();
-                        etPrueba.setText(error.getMessage().toString());
+                        //Este error esta comentado porqque hay veces que salta aunque este bien y esos es porque en update no se ha hecho ningun cambio ya que es igual tanto el nuevo como el viejo valor
+                        //Toast.makeText(DetallesPedidos.this, "setEstadoMesa onErrorResponse:"+error.toString(), Toast.LENGTH_SHORT).show();
+                        //etPrueba.setText(error.getMessage().toString());
                     }
                 }
         ){
@@ -195,8 +209,8 @@ public class DetallesPedidos extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
 
-                params.put("Estado", estado);
                 params.put("IdMesa", idMesa);
+                params.put("Estado", estado); //porque esta linea falla
 
                 return params;
             }
@@ -223,15 +237,15 @@ public class DetallesPedidos extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(DetallesPedidos.this, "Se ha borrado correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DetallesPedidos.this, "borrarPedidoExistente: Se ha borrado correctamente", Toast.LENGTH_SHORT).show();
                         //finish();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DetallesPedidos.this, error.toString(), Toast.LENGTH_SHORT).show();
-                        etPrueba.setText(error.getMessage().toString());
+                        Toast.makeText(DetallesPedidos.this, "borrarPedidoExistente onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
+                        //etPrueba.setText(error.getMessage().toString());
                     }
                 }
         ){
@@ -263,8 +277,8 @@ public class DetallesPedidos extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(DetallesPedidos.this, error.toString(), Toast.LENGTH_SHORT).show();
-                        etPrueba.setText(error.getMessage().toString());
+                        Toast.makeText(DetallesPedidos.this, "modificarPedido onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
+                        //etPrueba.setText(error.getMessage().toString());
                     }
                 }
         ){
@@ -299,14 +313,23 @@ public class DetallesPedidos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(listaDePlatosDelPedido.size()>0 && spIdMesa.getAdapter().getCount()>0){
-                    setEstadoMesa(spEstado.getSelectedItem().toString(), spIdMesa.getSelectedItem().toString());
+                    setEstadoMesa("Ocupado", spIdMesa.getSelectedItem().toString());
                     if(!spIdMesa.getSelectedItem().toString().equals(getIntent().getStringExtra("idMesa")) && !getIntent().getExtras().getBoolean("esNuevoPedido"))
                         setEstadoMesa("Libre", getIntent().getStringExtra("idMesa"));
-                    if(s.equals("Crear \nPedido")) modificarPedido(true);
-                    else modificarPedido(false);
-                    if(!getIntent().getExtras().getBoolean("esNuevoPedido")) addAndDeletePlatosPedidos(true);
+
+                    if(s.equals("Crear \nPedido")) {
+                        if (!spIdMesa.getSelectedItem().toString().equals(""))
+                            modificarPedido(true);
+                        else
+                            Toast.makeText(DetallesPedidos.this, "Debe seleccionar una mesa", Toast.LENGTH_SHORT).show();
+                    }else {modificarPedido(false);}
+
+                    if(!getIntent().getExtras().getBoolean("esNuevoPedido")){
+                        addAndDeletePlatosPedidos(true);
+                    }
                     addAndDeletePlatosPedidos(false);
-                    //finish();
+                    setResult(10);
+                    finish();
                 }else
                     Toast.makeText(DetallesPedidos.this, "No hay platos asignados a esta Mesa o No hay mesa asignada al pedido", Toast.LENGTH_SHORT).show();
             }
@@ -349,6 +372,7 @@ public class DetallesPedidos extends AppCompatActivity {
                         if (i < listaDePlatosDelPedido.size() - 1)  valores += ", ";
                     }
                     params.put("Valores", valores);
+                    //Toast.makeText(DetallesPedidos.this, ""+valores, Toast.LENGTH_SHORT).show();
                 }
 
                 return params;
@@ -358,7 +382,7 @@ public class DetallesPedidos extends AppCompatActivity {
     }
 
     private void addSpinnerEstadoPedido(){
-        String[] pedidoEstado = {"En Proceso", "Finalizado"};
+        String[] pedidoEstado = {"En Proceso", "Esperando Pago"};
         ArrayAdapter<String> arrayAdapterPedidoEstado = new ArrayAdapter<String>(DetallesPedidos.this, android.R.layout.simple_spinner_item, pedidoEstado);
         spEstado.setAdapter(arrayAdapterPedidoEstado);
     }
@@ -385,7 +409,7 @@ public class DetallesPedidos extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error){
                 //Toast.makeText(DetallesPedidos.this, "addSpinnerMesasDisponibles - onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(DetallesPedidos.this, "Actualemte no hay mesas disponibles", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetallesPedidos.this, "getMesasDisponibles: Actualemte no hay mesas disponibles", Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -440,14 +464,14 @@ public class DetallesPedidos extends AppCompatActivity {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
                                 if(!jsonData.getJSONObject(i).getString("ImagenPlato").equals("")) {
-                                    byte[] byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenCategoria"));
+                                    byte[] byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenPlato"));
                                     bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                                 }else bitmap = null;
                                 listaDePlatosDelPedido.add(new Plato(jsonData.getJSONObject(i).getString("IdPlatoComida"),jsonData.getJSONObject(i).getString("Nombre"),Integer.parseInt(jsonData.getJSONObject(i).getString("Cantidad")),getDoubleTwoDecimalFormat(jsonData.getJSONObject(i).getString("Precio")), bitmap));
                                 //Toast.makeText(DetallesPedidos.this, ""+getDoubleTwoDecimalFormat(jsonData.getJSONObject(i).getString("Precio")), Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
-                            Toast.makeText(DetallesPedidos.this, "onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DetallesPedidos.this, "generarPlatosDelPedido onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                         customAdapter.notifyDataSetChanged();
                         calcularTotalPedido();

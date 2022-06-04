@@ -24,6 +24,26 @@
     <color name="BotonAccederOscuro">#2E8B57</color>
     <color name="BotonAplicarFiltros">#FF1A39EA</color>
 
+    <color name="TituloBlanco1">#FEFEE7</color>
+    <color name="TextoBlanco1">#EEF8FF</color>
+    <color name="TextoHint1">#808182</color>
+    <color name="BotonTrue1">#2C8A57</color>
+    <color name="BotonFalse1">#DB153B</color>
+    <color name="PasswordEyes1">#45456F</color>
+    <color name="PedidoLocal1">#A9A96E</color>
+    <color name="PanelExpansion1">#28292C</color>
+    <color name="FondoMain1">#343539</color>
+    <color name="PanelTexto">#DBDBDB</color>
+    <color name="BotonNuevoPedido">#FEE2B0</color>
+    <color name="BotonQuitarPlato">#FF4645</color>
+    <color name="NuevoPlato">#42E04A</color>
+    <color name="AlertDialogEncabezado">#000000</color>
+    <color name="AlertDialogBody">#343539</color>
+    <color name="AlertDialogBoton">#2390FD</color>
+    <color name="GroupBox">#1E1E1E</color>
+    <color name="ItemPedido">#4C4C9A</color>
+    <color name="ListaItemPlato">#3B3B59</color>
+
     <!-- COLORES PARA TEMA CLARO -->
 
     <color name="AzulAgua">#00bfff</color>

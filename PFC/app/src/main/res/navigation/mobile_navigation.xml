@@ -8,24 +8,24 @@
     <fragment
         android:id="@+id/itmMenuMain"
         android:name="pruebas.com.pfc.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Tus Pedidos"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/itmPlatos"
         android:name="pruebas.com.pfc.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="Consultar Platos"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/itmOtrosClientes"
         android:name="pruebas.com.pfc.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="Pedidos Local"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/itmConfiguracion"
         android:name="pruebas.com.pfc.PerfilConfiguracion"
-        android:label="Configuracion"
+        android:label="Perfil"
         tools:layout="@layout/fragment_perfil_configuracion" />
 </navigation>

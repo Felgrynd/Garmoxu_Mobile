@@ -1,6 +1,7 @@
 package pruebas.com.pfc.ui.home;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -24,11 +26,12 @@ import org.json.JSONObject;
 
 import pruebas.com.pfc.DetallesPedidos;
 import pruebas.com.pfc.MainActivity;
+import pruebas.com.pfc.MenuMain;
 import pruebas.com.pfc.R;
 
 public class HomeFragment extends Fragment {
 
-    private EditText etBuscarMesaPropio;
+    //private EditText etBuscarMesaPropio;
     private LinearLayout llMesasPropias, llDynamic;
     private Button btnDynamic;
 
@@ -50,7 +53,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        etBuscarMesaPropio = (EditText) v.findViewById(R.id.etBuscarMesaPropio);
+        //etBuscarMesaPropio = (EditText) v.findViewById(R.id.etBuscarMesaPropio);
         llMesasPropias = v.findViewById(R.id.llMesasPropias);
 
         requestQueue = Volley.newRequestQueue(getActivity());
@@ -85,6 +88,8 @@ public class HomeFragment extends Fragment {
                                 }
                                 btnDynamic = new Button(getActivity());
                                 btnDynamic.setText(jsonData.getJSONObject(i).getString("IdMesa"));
+                                btnDynamic.setTextColor(Color.WHITE);
+                                btnDynamic.setTextSize(21);
                                 btnDynamic.setId(Integer.parseInt(jsonData.getJSONObject(i).getString("IdMesa")));
                                 btnDynamic.setTag(jsonData.getJSONObject(i).getString("IdPedido"));
                                 //btnDynamic.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,200));
@@ -124,7 +129,8 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("btnIzq", "Borrar \nPedido");
                 intent.putExtra("esNuevoPedido", false);
                 intent.putExtra("tusPedidos", true);
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent,1);
             }
         };
     }

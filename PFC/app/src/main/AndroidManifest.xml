@@ -6,52 +6,61 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_garmoxu"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_garmoxu_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PFC"
         android:usesCleartextTraffic="true">
         <activity
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:name=".VerCategorias"
             android:exported="false"
             android:label="@string/Categorias"/>
 
         <activity
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:name=".DetallesPedidos"
             android:exported="false"
-            android:label="@string/DetallesPedido"/>
+            android:label="Detalles Del Pedido"/>
 
         <activity
             android:name=".CambiarPasswd"
             android:exported="false"/>
         <activity
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:name=".PlatosDeCategorias"
             android:exported="false"
-            android:label="@string/PlatosCategoria"/>
+            android:label="Platos"/>
         <activity
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:name=".VerPlatos"
-            android:exported="false"
-            android:label="@string/VerPlatos"/>
+            android:exported="true"
+            android:label="Detalles del Plato">
+
+        </activity>
 
         <activity
             android:name=".InicioSesion"
             android:exported="false" />
 
         <activity
+            android:exported="true"
             android:name=".MainActivity"
-            android:label="@string/Garmoxu"/>
+            android:label="@string/Garmoxu">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".MenuMain"
             android:exported="true"
             android:label="Garmoxu"
             android:theme="@style/Theme.PFC.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

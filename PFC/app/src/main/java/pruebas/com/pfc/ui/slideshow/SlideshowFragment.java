@@ -1,6 +1,7 @@
 package pruebas.com.pfc.ui.slideshow;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ import pruebas.com.pfc.R;
 
 public class SlideshowFragment extends Fragment {
 
-    private EditText etBuscarMesa;
+    //private EditText etBuscarMesa;
     private LinearLayout llMesas, llDynamic;
     private Button btnDynamic;
 
@@ -50,7 +51,7 @@ public class SlideshowFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_slideshow, container, false);
 
-        etBuscarMesa = (EditText) v.findViewById(R.id.etBuscarMesa);
+        //etBuscarMesa = (EditText) v.findViewById(R.id.etBuscarMesa);
         llMesas = v.findViewById(R.id.llMesas);
 
         requestQueue = Volley.newRequestQueue(getActivity());
@@ -85,6 +86,7 @@ public class SlideshowFragment extends Fragment {
                                 btnDynamic = new Button(getActivity());
                                 btnDynamic.setText(jsonData.getJSONObject(i).getString("IdMesa"));
                                 btnDynamic.setId(i);
+                                btnDynamic.setTextColor(Color.WHITE);
                                 btnDynamic.setTag(jsonData.getJSONObject(i).getString("IdPedido"));
                                 //btnDynamic.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,200));
                                 btnDynamic.setLayoutParams(params);
@@ -92,7 +94,6 @@ public class SlideshowFragment extends Fragment {
                                 btnDynamic.setOnClickListener(dynamicOnClick());
 
                                 llDynamic.addView(btnDynamic);
-                                Toast.makeText(getActivity(), jsonData.getJSONObject(i).getString("IdPedido")+jsonData.getJSONObject(i).getString("IdMesa"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), "onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();

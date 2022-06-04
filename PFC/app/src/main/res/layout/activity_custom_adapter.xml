@@ -5,80 +5,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="10dp"
+    android:paddingVertical="10dp"
     tools:context=".CustomAdapter">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:id="@+id/ivPedidoPlado"
-        android:layout_weight="1"
-        android:src="@drawable/noimage"
-        />
-
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_weight="3"
-        android:orientation="vertical"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="right"
-            >
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="9"
-                android:layout_height="match_parent"
-                android:id="@+id/tvText"
-                android:layout_marginHorizontal="10dp"
-                />
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="20dp"
-                android:layout_gravity="top|right"
-                android:id="@+id/btnClose"
-                android:text="x"
-                android:textSize="10dp"
-                android:background="@drawable/custom_button_a"
-                android:backgroundTint="@color/rojoOscuro"
-                />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/custom_button_a"
+        android:backgroundTint="@color/ItemPedido"
+        android:padding="10dp">
 
-        </LinearLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivPedidoPlado"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="2"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:scaleType="centerCrop"
+            android:src="@drawable/noimage"
+            app:shapeAppearanceOverlay="@style/rardiusImage3"
+            />
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="5"
+            android:orientation="vertical"
             >
-            <Button
-                android:background="@drawable/custom_button_a"
-                android:backgroundTint="@color/BotonAccederOscuro"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:id="@+id/btnPlus"
-                android:text="+"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvNumb"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="30dp"
-                android:text="0"/>
-            <Button
-                android:background="@drawable/custom_button_a"
-                android:backgroundTint="@color/rojoClarito"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:id="@+id/btnLess"
-                android:text="-"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="right"
+                >
+                <TextView
+                    android:paddingTop="5dp"
+                    android:textColor="@color/TextoBlanco1"
+                    android:layout_width="0dp"
+                    android:layout_weight="9"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvText"
+                    android:layout_marginHorizontal="10dp"
+                    />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp"
+                    android:layout_gravity="top|right"
+                    android:id="@+id/btnClose"
+                    android:text="x"
+                    android:textSize="10dp"
+                    android:background="@drawable/custom_button_a"
+                    android:backgroundTint="@color/BotonQuitarPlato"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                >
+                <Button
+                    android:background="@drawable/custom_button_a"
+                    android:backgroundTint="@color/AlertDialogBoton"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/btnLess"
+                    android:text="-"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvNumb"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="30dp"
+                    android:textColor="@color/TextoBlanco1"
+                    android:text="0"/>
+                <Button
+                    android:background="@drawable/custom_button_a"
+                    android:backgroundTint="@color/AlertDialogBoton"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/btnPlus"
+                    android:text="+"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

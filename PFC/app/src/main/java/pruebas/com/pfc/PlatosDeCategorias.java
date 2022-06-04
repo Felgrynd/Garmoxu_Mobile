@@ -8,6 +8,8 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,10 +17,10 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +38,13 @@ import java.util.Base64;
 
 public class PlatosDeCategorias extends AppCompatActivity {
 
-    private EditText etBuscarPlatosDeCategoria;
-    private LinearLayout llPlatosDeCategorias, llDynamic;
-    private ImageButton ibtnDynamic;
+    //private EditText etBuscarPlatosDeCategoria;
+    private LinearLayout llPlatosDeCategorias, llDynamicHorizontal;
+    //private ImageButton ibtnDynamic;
     private CardView cvDynamic;
     private TextView tvDynamic;
+    private ImageView ivDynamic;
+    private RelativeLayout rlDynamic;
 
     private RequestQueue requestQueue;
     private String urlDomain;
@@ -51,7 +55,7 @@ public class PlatosDeCategorias extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_platos_de_categorias);
 
-        etBuscarPlatosDeCategoria = findViewById(R.id.etBuscarPlatosDeCategoria);
+        //etBuscarPlatosDeCategoria = findViewById(R.id.etBuscarPlatosDeCategoria);
         llPlatosDeCategorias = findViewById(R.id.llPlatosDeCategorias);
         //idCategoria = getIntent().getStringExtra("idCategoria");
 
@@ -74,82 +78,99 @@ public class PlatosDeCategorias extends AppCompatActivity {
                     @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onResponse(JSONObject response){
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, 500);
-                        params.weight = 1;
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(450, 450);
+                        //params.weight = 1;
                         params.topMargin = 20;
                         params.leftMargin = 20;
                         params.rightMargin = 20;
                         params.bottomMargin = 20;
+
                         Bitmap bitmap = null;
+                        byte[] byteArray = null;
+
+                        RelativeLayout.LayoutParams rlParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        //rlParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+                        //para Centrarlo en botton
+                        rlParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
                                 //Toast.makeText(getActivity(), jsonData.getJSONObject(i).getString("IdPedido")+jsonData.getJSONObject(i).getString("IdMesa"), Toast.LENGTH_SHORT).show();
                                 if(i % 2 == 0){
-                                    llDynamic = new LinearLayout(PlatosDeCategorias.this);
-                                    llDynamic.setOrientation(LinearLayout.HORIZONTAL);
-                                    llDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                                    llDynamic.setGravity(Gravity.CENTER);
-                                    llPlatosDeCategorias.addView(llDynamic);
+                                    llDynamicHorizontal = new LinearLayout(PlatosDeCategorias.this);
+                                    llDynamicHorizontal.setOrientation(LinearLayout.HORIZONTAL);
+                                    llDynamicHorizontal.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                                    llDynamicHorizontal.setGravity(Gravity.CENTER);
+                                    llPlatosDeCategorias.addView(llDynamicHorizontal);
                                 }
                                 cvDynamic = new CardView(PlatosDeCategorias.this);
-                                ibtnDynamic = new ImageButton(PlatosDeCategorias.this);
+                                ivDynamic = new ImageView(PlatosDeCategorias.this);
                                 tvDynamic = new TextView(PlatosDeCategorias.this);
+                                rlDynamic = new RelativeLayout(PlatosDeCategorias.this);
+
+                                rlDynamic.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
                                 //btnDynamic.setId(i);
                                 tvDynamic.setText(jsonData.getJSONObject(i).getString("Nombre"));
                                 tvDynamic.setTag(jsonData.getJSONObject(i).getString("IdPlatoComida"));
-                                tvDynamic.setGravity(Gravity.CENTER);
-                                tvDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                                //tvDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                                tvDynamic.setLayoutParams(rlParams);
+                                tvDynamic.setTextColor(Color.BLACK);
+                                tvDynamic.setTypeface(null, Typeface.BOLD);
+                                tvDynamic.setTextSize(15);
+                                tvDynamic.setBackgroundResource(R.drawable.text_view_background_a);
+                                tvDynamic.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-                                ibtnDynamic.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                                ivDynamic.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
                                 if(jsonData.getJSONObject(i).getString("ImagenPlato").equals(""))
-                                    ibtnDynamic.setImageResource(R.drawable.noimage);
+                                    ivDynamic.setImageResource(R.drawable.noimage);
                                 else {
-                                    byte[] byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenCategoria"));
+                                    byteArray = Base64.getDecoder().decode(jsonData.getJSONObject(i).getString("ImagenPlato"));
                                     bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-                                    ibtnDynamic.setImageBitmap(bitmap);
+                                    ivDynamic.setImageBitmap(bitmap);
                                 }
-                                ibtnDynamic.setScaleType(ImageView.ScaleType.CENTER);
+                                ivDynamic.setScaleType(ImageView.ScaleType.FIT_XY);
 
-                                cvDynamic.setRadius(20);
+                                cvDynamic.setRadius(30);
                                 cvDynamic.setLayoutParams(params);
-                                cvDynamic.addView(ibtnDynamic);
-                                cvDynamic.addView(tvDynamic);
+
+                                rlDynamic.addView(ivDynamic);
+                                rlDynamic.addView(tvDynamic);
+                                cvDynamic.addView(rlDynamic);
                                 tvDynamic.bringToFront();
 
                                 //btnDynamic.setBackgroundResource(R.drawable.custom_button_a);
                                 if(getIntent().getExtras().getBoolean("esConsulta"))
-                                    tvDynamic.setOnClickListener(dynamicOnClickConsultarPlato(jsonData.getJSONObject(i).getString("IdPlatoComida"),bitmap));
+                                    tvDynamic.setOnClickListener(dynamicOnClickConsultarPlato(jsonData.getJSONObject(i).getString("IdPlatoComida")));
                                 else
                                     tvDynamic.setOnClickListener(dynamicOnClickAddPlato(jsonData.getJSONObject(i).getString("IdPlatoComida"), jsonData.getJSONObject(i).getString("PrecioConIVA"), jsonData.getJSONObject(i).getString("Nombre"), bitmap));
 
-                                llDynamic.addView(cvDynamic);
+                                llDynamicHorizontal.addView(cvDynamic);
                             }
                         } catch (Exception e) {
                             Toast.makeText(PlatosDeCategorias.this, "onResponse: \n"+e.toString(), Toast.LENGTH_SHORT).show();
-                            etBuscarPlatosDeCategoria.setText("onResponse: \n"+etBuscarPlatosDeCategoria.getText()+e.toString());
+                            //etBuscarPlatosDeCategoria.setText("onResponse: \n"+etBuscarPlatosDeCategoria.getText()+e.toString());
                         }
                     }
                 }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
                 Toast.makeText(PlatosDeCategorias.this, "onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                etBuscarPlatosDeCategoria.setText("onErrorResponse: \n"+etBuscarPlatosDeCategoria.getText()+error.toString());
+                //etBuscarPlatosDeCategoria.setText("onErrorResponse: \n"+etBuscarPlatosDeCategoria.getText()+error.toString());
             }
         }
         );
         requestQueue.add(jsonObjectRequest);
     }
 
-    private View.OnClickListener dynamicOnClickConsultarPlato(String idPlato, Bitmap bitmap){
+    private View.OnClickListener dynamicOnClickConsultarPlato(String idPlato){
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(PlatosDeCategorias.this, ""+idPlato, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent().setClass(PlatosDeCategorias.this, VerPlatos.class);
                 intent.putExtra("idPlato", idPlato);
-                intent.putExtra("ImagenPlato", bitmap);
                 startActivity(intent);
             }
         };

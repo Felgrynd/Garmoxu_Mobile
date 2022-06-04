@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,7 +31,7 @@ import java.util.Base64;
 
 public class InicioSesion extends AppCompatActivity {
 
-    private EditText etUser, etPass;
+    private TextInputEditText etUser, etPass;
     private Button btnLogin;
 
     private RequestQueue requestQueue;

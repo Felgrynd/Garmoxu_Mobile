@@ -19,7 +19,7 @@
 
 
     <!-- APARTADO DE APLICACIÓN, PALABRAS A TRADUCIR EN EL FUTURO -->
-    <string name="TextoUsoAPPInicioSesion">Esta aplicacion esta orientado al uso exclusivo para los empleados al servicio del cliente del Local</string>
+    <string name="TextoUsoAPPInicioSesion">Esta aplicacion esta orientado al uso exclusivo para los empleados al servicio del cliente del local</string>
 
     <string name="BuscarPedido">Buscar Pedido</string>
     <string name="BuscarPlato">Buscar Plato</string>
@@ -52,8 +52,8 @@
     <string name="BorrarPedido">Borrar pedido</string>
     <string name="GuardarModificacion">Guardar modificacion</string>
     <string name="Configuracion">Configuracion</string>
-    <string name="InicioSesion">Inicio Sesión</string>
-
+    <string name="Acceder">Acceder</string>
+    <string name="Guardar">Guardar</string>
 
     <string name="CodigoPlato">Codigo plato:</string>
     <string name="PrecioTotal">Precio total:</string>

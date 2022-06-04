@@ -8,18 +8,19 @@
     android:padding="15dp"
     android:background="@color/FondoOscuro"
     tools:context=".VerCategorias">
-
+<!--
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/BuscarCategoria"
         android:textColorHint="@color/LetraBlanco"
         android:textColor="@color/LetraBlanco"
+        android:backgroundTint="@color/TextoBlanco1"
         android:id="@+id/etBuscarCategoria"
         android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="5dp"
         />
-
+-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

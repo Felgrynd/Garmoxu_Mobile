@@ -13,6 +13,10 @@ import android.widget.TextView;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,6 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import pruebas.com.pfc.databinding.ActivityMenuMainBinding;
+import pruebas.com.pfc.ui.home.HomeFragment;
 
 public class MenuMain extends AppCompatActivity {
 
@@ -29,12 +34,16 @@ public class MenuMain extends AppCompatActivity {
     private TextView tvNombre, tvUser;
     private ShapeableImageView ivPuesto;
 
+    private static MenuMain menuMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMenuMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        menuMain = this;
 
 /*1>>Aqui debemos añadir los nombres de los usuarios con el id como where de condicional<<*/
         NavigationView nv = findViewById(R.id.nav_view);
@@ -47,8 +56,10 @@ public class MenuMain extends AppCompatActivity {
         //ivPuesto.setImageResource(R.drawable.ic_launcher_foreground);
         tvUser.setText(getIntent().getStringExtra("NombreUsuario"));
         tvNombre.setText(getIntent().getStringExtra("NombreEmpleado"));
-        Bitmap bitmap = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("ImagenUsuario"), 0, getIntent().getByteArrayExtra("ImagenUsuario").length);
-        ivPuesto.setImageBitmap(bitmap);
+        if(getIntent().getByteArrayExtra("ImagenUsuario").length>0) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("ImagenUsuario"), 0, getIntent().getByteArrayExtra("ImagenUsuario").length);
+            ivPuesto.setImageBitmap(bitmap);
+        }
 //1------*/
 
         setSupportActionBar(binding.appBarMenuMain.toolbar);
@@ -65,7 +76,8 @@ public class MenuMain extends AppCompatActivity {
                 intent.putExtra("btnDer", "Crear \nPedido");
                 intent.putExtra("btnIzq", "Cancelar \nPedido");
                 intent.putExtra("esNuevoPedido", true);
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -84,7 +96,7 @@ public class MenuMain extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -93,5 +105,19 @@ public class MenuMain extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 10){
+            refreshHomeDesdeMenu();
+        }
+    }
+
+    public static void refreshHomeDesdeMenu(){
+        Fragment fragment = new HomeFragment();
+        FragmentManager fragmentManager = menuMain.getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.nav_host_fragment_content_menu_main, fragment).commit();
     }
 }

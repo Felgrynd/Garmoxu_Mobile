@@ -7,18 +7,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    android:background="@color/FondoOscuro"
+    android:background="@drawable/background_menu"
     tools:context=".ui.slideshow.SlideshowFragment" >
 
+    <!--
     <EditText
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etBuscarMesa"
         android:hint="Buscar Mesa"
         android:textColorHint="@color/LetraBlanco"
         android:textColor="@color/LetraBlanco"
+        android:backgroundTint="@color/TextoBlanco1"
         />
+        -->
 
     <ScrollView
         android:layout_width="match_parent"

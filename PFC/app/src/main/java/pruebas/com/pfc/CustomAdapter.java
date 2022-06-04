@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.imageview.ShapeableImageView;
+
 import java.util.ArrayList;
 
 public class CustomAdapter extends ArrayAdapter<Plato> {
@@ -19,7 +21,7 @@ public class CustomAdapter extends ArrayAdapter<Plato> {
 
     private Button btnClose, btnPlus, btnLess;
     private TextView tvTexto, tvNumb;
-    private ImageView ivPedidoPlado;
+    private ShapeableImageView ivPedidoPlado;
 
     public CustomAdapter(Context context, int resource, ArrayList<Plato> objects) {
         super(context, resource,objects);
@@ -41,8 +43,8 @@ public class CustomAdapter extends ArrayAdapter<Plato> {
 
         tvTexto.setText(getItem(pos).getIdPlato()+" - "+getItem(pos).getNombre());
         tvNumb.setText(getItem(pos).getCantidad()+"");
-        if(getItem(pos).getBitmap() == null) ivPedidoPlado.setImageResource(R.drawable.noimage);
-        else ivPedidoPlado.setImageBitmap(getItem(pos).getBitmap());
+        if(getItem(pos).getImgPlato() == null) ivPedidoPlado.setImageResource(R.drawable.noimage);
+        else ivPedidoPlado.setImageBitmap(getItem(pos).getImgPlato());
         ivPedidoPlado.setScaleType(ImageView.ScaleType.CENTER);
 
         btnClose.setOnClickListener(new View.OnClickListener() {

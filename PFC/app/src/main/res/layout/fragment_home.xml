@@ -7,18 +7,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    android:background="@color/FondoOscuro"
+    android:background="@drawable/background_menu"
     tools:context=".ui.home.HomeFragment" >
 
+    <!--
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Buscar Pedido"
         android:id="@+id/etBuscarMesaPropio"
-        android:textColor="@color/LetraBlanco"
-        android:textColorHint="@color/LetraBlanco"
+        android:textColor="@color/TextoBlanco1"
+        android:textColorHint="@color/TextoBlanco1"
+        android:backgroundTint="@color/TextoBlanco1"
         />
-
+-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

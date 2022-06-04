@@ -5,14 +5,17 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:iconTint="#F9C749"
             android:id="@+id/itmMenuMain"
             android:icon="@drawable/iconomispedidos"
             android:title="@string/TusMesas" />
         <item
+            android:iconTint="#DAAA59"
             android:id="@+id/itmPlatos"
             android:icon="@drawable/iconoplatos"
             android:title="@string/ConsultarPlatos" />
         <item
+            android:iconTint="#F9C749"
             android:id="@+id/itmOtrosClientes"
             android:icon="@drawable/iconopedidosrestaurante"
             android:title="@string/MesasCompañeros" />
@@ -34,6 +37,9 @@
         <item
             android:title=""/>
         <item
+            android:title=""/>
+        <item
+            android:iconTint="#A8A8A8"
             android:id="@+id/itmConfiguracion"
             android:icon="@drawable/iconoajustes"
             android:title="@string/Configuracion"/>

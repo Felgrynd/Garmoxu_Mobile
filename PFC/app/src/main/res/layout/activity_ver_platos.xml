@@ -7,14 +7,16 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:id="@+id/llDiponobilidad"
-    android:background="@color/FondoOscuro"
+    android:background="@color/FondoMain1"
     tools:context=".VerPlatos">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="5"
         android:text="@string/IdPlato"
+        android:textColor="@color/TituloBlanco1"
+        android:textSize="25dp"
         android:gravity="center"
         android:id="@+id/tvIdPedido"
         />
@@ -22,76 +24,101 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="40"
         android:gravity="center"
         >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivImagenPlato"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:scaleType="centerCrop"
             android:src="@drawable/noimage"
+            app:shapeAppearanceOverlay="@style/rardiusImage2"
             />
     </LinearLayout>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:textColorHint="@color/TextoHint1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/tvNombre"
-        android:text="@string/Nombre"
-        />
+        android:layout_weight="10"
+        android:hint="@string/Nombre"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tvNombre"
+            android:enabled="false"
+            android:textColor="@color/TextoBlanco1"
+            android:backgroundTint="@color/FondoMain1"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:textColorHint="@color/TextoHint1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/tvPrecio"
-        android:text="@string/PrecioASecas"
-        android:gravity="right"
-        />
+        android:layout_weight="10"
+        android:hint="@string/PrecioASecas"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tvPrecio"
+            android:enabled="false"
+            android:textColor="@color/TextoBlanco1"
+            android:backgroundTint="@color/FondoMain1"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="15"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="10"
             android:text="@string/ListaAlergenos"
-            android:textColor="@color/LetraBlanco"
+            android:textColor="@color/TextoBlanco1"
             android:textSize="20dp"/>
 
         <TextView
-            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:id="@+id/tvAlergenos"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/borde_marcado_caja"
-            android:textColor="@color/LetraBlanco"/>
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:background="@drawable/groupbox_black"
+            android:textColor="@color/TextoHint1"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp">
+        android:layout_weight="25"
+        android:orientation="vertical">
 
         <TextView
+            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="10"
             android:text="@string/DescripcionPlato"
-            android:textColor="@color/LetraBlanco"
+            android:textColor="@color/TextoBlanco1"
             android:textSize="20dp"/>
 
         <TextView
+            android:padding="10dp"
             android:id="@+id/tvDescripcion"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/borde_marcado_caja"
-            android:textColor="@color/LetraBlanco"/>
+            android:layout_height="0dp"
+            android:layout_weight="25"
+            android:background="@drawable/groupbox_black"
+            android:textColor="@color/TextoHint1"/>
     </LinearLayout>
 
 </LinearLayout>
