@@ -42,6 +42,6 @@
             android:iconTint="#A8A8A8"
             android:id="@+id/itmConfiguracion"
             android:icon="@drawable/iconoajustes"
-            android:title="@string/Configuracion"/>
+            android:title="Perfil"/>
     </group>
 </menu>

@@ -65,7 +65,7 @@ public class VerPlatos extends AppCompatActivity {
                         try {
                             JSONArray jsonData = response.getJSONArray("data");
                             for (int i = 0; i<jsonData.length(); i++){
-                                if(jsonData.getJSONObject(i).getString("Disponibilidad").equals("0")) llDiponobilidad.setBackgroundColor(Color.RED);
+                                if(jsonData.getJSONObject(i).getString("Disponibilidad").equals("0")) tvIdPedido.setBackgroundColor(Color.RED);
                                 tvIdPedido.setText(jsonData.getJSONObject(i).getString("IdPlatoComida"));
                                 tvNombre.setText(jsonData.getJSONObject(i).getString("Nombre"));
                                 if(!jsonData.getJSONObject(i).getString("ImagenPlato").equals("")) {
@@ -75,7 +75,9 @@ public class VerPlatos extends AppCompatActivity {
                                 }
                                 tvPrecio.setText(jsonData.getJSONObject(i).getString("PrecioConIVA"));
                                 tvDescripcion.setText(jsonData.getJSONObject(i).getString("Descripcion"));
-                                tvAlergenos.setText(jsonData.getJSONObject(i).getString("Alergenos"));
+                                if(!jsonData.getJSONObject(i).getString("Alergenos").equals("null")){
+                                    tvAlergenos.setText(jsonData.getJSONObject(i).getString("Alergenos"));
+                                }
                             }
                         } catch (Exception e) {
                             Toast.makeText(VerPlatos.this, "onResponse: \n" + e.toString(), Toast.LENGTH_SHORT).show();

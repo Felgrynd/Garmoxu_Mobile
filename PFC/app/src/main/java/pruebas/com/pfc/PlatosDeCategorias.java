@@ -143,6 +143,9 @@ public class PlatosDeCategorias extends AppCompatActivity {
                                 //btnDynamic.setBackgroundResource(R.drawable.custom_button_a);
                                 if(getIntent().getExtras().getBoolean("esConsulta"))
                                     tvDynamic.setOnClickListener(dynamicOnClickConsultarPlato(jsonData.getJSONObject(i).getString("IdPlatoComida")));
+                                else if(!getIntent().getExtras().getBoolean("esConsulta") && jsonData.getJSONObject(i).getString("Disponibilidad").equals("0")){
+                                    tvDynamic.setOnClickListener(noDisponible());
+                                }
                                 else
                                     tvDynamic.setOnClickListener(dynamicOnClickAddPlato(jsonData.getJSONObject(i).getString("IdPlatoComida"), jsonData.getJSONObject(i).getString("PrecioConIVA"), jsonData.getJSONObject(i).getString("Nombre"), bitmap));
 
@@ -156,12 +159,21 @@ public class PlatosDeCategorias extends AppCompatActivity {
                 }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
-                Toast.makeText(PlatosDeCategorias.this, "onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
-                //etBuscarPlatosDeCategoria.setText("onErrorResponse: \n"+etBuscarPlatosDeCategoria.getText()+error.toString());
+                //Toast.makeText(PlatosDeCategorias.this, "onErrorResponse: \n"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PlatosDeCategorias.this, "No hay platos asignados a esta categoria", Toast.LENGTH_SHORT).show();
             }
         }
         );
         requestQueue.add(jsonObjectRequest);
+    }
+
+    private View.OnClickListener noDisponible(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(PlatosDeCategorias.this, "Plato No Disponible", Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 
     private View.OnClickListener dynamicOnClickConsultarPlato(String idPlato){
