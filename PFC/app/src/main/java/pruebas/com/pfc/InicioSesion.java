@@ -116,7 +116,8 @@ public class InicioSesion extends AppCompatActivity {
                 }, new Response.ErrorListener(){
             @Override
             public void onErrorResponse(VolleyError error){
-                Toast.makeText(InicioSesion.this, "onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(InicioSesion.this, "onErrorResponse: "+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InicioSesion.this, "Usuario o Contraseña incorrecta", Toast.LENGTH_SHORT).show();
             }
         }
         );

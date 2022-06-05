@@ -74,7 +74,9 @@ public class VerPlatos extends AppCompatActivity {
                                     ivImagenPlato.setImageBitmap(bitmap);
                                 }
                                 tvPrecio.setText(jsonData.getJSONObject(i).getString("PrecioConIVA"));
-                                tvDescripcion.setText(jsonData.getJSONObject(i).getString("Descripcion"));
+                                if(!jsonData.getJSONObject(i).getString("Descripcion").equals("null")){
+                                    tvDescripcion.setText(jsonData.getJSONObject(i).getString("Descripcion"));
+                                }
                                 if(!jsonData.getJSONObject(i).getString("Alergenos").equals("null")){
                                     tvAlergenos.setText(jsonData.getJSONObject(i).getString("Alergenos"));
                                 }

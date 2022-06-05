@@ -314,7 +314,7 @@ public class DetallesPedidos extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(listaDePlatosDelPedido.size()>0 && spIdMesa.getAdapter().getCount()>0){
+                if(listaDePlatosDelPedido.size()>0 && !spIdMesa.getSelectedItem().toString().equals("")){
                     setEstadoMesa("Ocupado", spIdMesa.getSelectedItem().toString());
                     if(!spIdMesa.getSelectedItem().toString().equals(getIntent().getStringExtra("idMesa")) && !getIntent().getExtras().getBoolean("esNuevoPedido"))
                         setEstadoMesa("Libre", getIntent().getStringExtra("idMesa"));
