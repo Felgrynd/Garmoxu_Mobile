@@ -226,7 +226,10 @@ public class DetallesPedidos extends AppCompatActivity {
                 if(s.equals("Cancelar \nPedido") && esNuevoPedido) {
                     Toast.makeText(DetallesPedidos.this, "Se ha cancelado el pedido", Toast.LENGTH_SHORT).show();
                     finish();
-                }else borrarPedidoExistente();
+                }else {
+                    borrarPedidoExistente();
+                    setEstadoMesa("Libre", spIdMesa.getSelectedItem().toString());
+                }
             }
         };
     }
@@ -343,7 +346,7 @@ public class DetallesPedidos extends AppCompatActivity {
                             finish();
                             //alert.dismiss();
                         }
-                    }, 1500);
+                    }, 3000);
 
                 }else
                     Toast.makeText(DetallesPedidos.this, "No hay platos asignados a esta Mesa o No hay mesa asignada al pedido", Toast.LENGTH_SHORT).show();

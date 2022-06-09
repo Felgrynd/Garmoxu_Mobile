@@ -55,7 +55,6 @@ public class VerPlatos extends AppCompatActivity {
     private void generarDetallesPlatos() {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                //MainActivity.DOMAIN + "categorias_platos.php?IdCategoria=0&EsOpc=3&IdPlatoComida=1",
                 MainActivity.DOMAIN + "categorias_platos.php?IdCategoria=0&EsOpc=3&IdPlatoComida="+getIntent().getStringExtra("idPlato"),
                 null,
                 new Response.Listener<JSONObject>() {

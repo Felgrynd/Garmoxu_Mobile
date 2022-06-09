@@ -20,7 +20,7 @@ public class ProgressBarLoading {
 
         LayoutInflater inflater = activity.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.dialog_load, null));
-        builder.setCancelable(true);
+        builder.setCancelable(false);
 
         dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:textColor="@color/white"
-        android:text="Verificando Usuario..."
+        android:text="Cargando..."
         android:textStyle="bold"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
