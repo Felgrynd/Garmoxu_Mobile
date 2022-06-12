@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/itmMenuMain"
         android:name="pruebas.com.pfc.ui.home.HomeFragment"
-        android:label="Tus Pedidos"
+        android:label="@string/TusPedidos"
         tools:layout="@layout/fragment_home" />
 
     <fragment
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/itmOtrosClientes"
         android:name="pruebas.com.pfc.ui.slideshow.SlideshowFragment"
-        android:label="Pedidos Local"
+        android:label="@string/PedidosCompañeros"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment

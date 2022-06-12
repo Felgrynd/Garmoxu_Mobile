@@ -8,7 +8,7 @@
             android:iconTint="#F9C749"
             android:id="@+id/itmMenuMain"
             android:icon="@drawable/iconomispedidos"
-            android:title="@string/TusMesas" />
+            android:title="@string/TusPedidos" />
         <item
             android:iconTint="#DAAA59"
             android:id="@+id/itmPlatos"
@@ -18,7 +18,7 @@
             android:iconTint="#F9C749"
             android:id="@+id/itmOtrosClientes"
             android:icon="@drawable/iconopedidosrestaurante"
-            android:title="@string/MesasCompañeros" />
+            android:title="@string/PedidosCompañeros" />
     </group>
 <!--Hayq que posicionarlo en la parte de abajo(gravity botton)-->
     <group>

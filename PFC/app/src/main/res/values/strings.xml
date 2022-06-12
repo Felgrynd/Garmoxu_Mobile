@@ -68,9 +68,9 @@
     <string name="NumeroMesa">Numero de la mesa</string>
     <string name="EstadoPedido">Estado del pedido:</string>
 
-    <string name="TusMesas">Tus Mesas</string>
+    <string name="TusPedidos">Tus pedidos</string>
     <string name="ConsultarPlatos">Consultar platos</string>
-    <string name="MesasCompañeros">Mesas de tus compañeros</string>
+    <string name="PedidosCompañeros">Pedidos de tus compañeros</string>
     <string name="Ajustes">Ajustes</string>
     <string name="Garmoxu">Garmoxu</string>
 
